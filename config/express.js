@@ -59,4 +59,5 @@ module.exports = function(app, db) {
   ]));
 
   // app.use(seo());
+
 };
