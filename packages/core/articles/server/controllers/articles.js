@@ -7,13 +7,11 @@ var mongoose = require('mongoose'),
     Article = mongoose.model('Article'),
     _ = require('lodash');
 
-
-
 module.exports = function(Articles) {
 
     return {
         /**
-        
+         * Find article by id
          */
         article: function(req, res, next, id) {
             Article.load(id, function(err, article) {
