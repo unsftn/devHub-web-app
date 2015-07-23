@@ -3,8 +3,8 @@
 // Article authorization helpers
 
 module.exports = function(Meetups, app, auth) {
-  
-  var meetups = require('../controllers/meetup.server.controller')(Meetups);
+
+    var meetups = require('../controllers/meetup')(Meetups);
 
   app.route('/api/meetups')
     .get(meetups.all)

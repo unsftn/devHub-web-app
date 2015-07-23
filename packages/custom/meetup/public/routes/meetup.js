@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('mean.meetups').config(['$stateProvider',
+angular.module('mean.meetup').config(['$stateProvider',
 	function($stateProvider){
 
 		$stateProvider
 			.state('all meetups',{
 				url: '/meetups',
-				templateUrl: '/meetups/views/list.html'
+				templateUrl: 'meetups/views/list.html'
 				// Nedostaje resolve za proveru logovanja
 			})
 			.state('create meetup',{

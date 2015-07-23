@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.meetups').controller('MeetupsController',['$scope', '$stateParams', '$location', 'Global', 'Meetups', 'MeanUser', 'Circles'
+angular.module('mean.meetup').controller('MeetupsController',['$scope', '$stateParams', '$location', 'Global', 'Meetups', 'MeanUser', 'Circles',
 
 	function($scope, $stateParams, $location, Global, Meetups, MeanUser, Circles){
 		$scope.global = Global;
@@ -32,10 +32,11 @@ angular.module('mean.meetups').controller('MeetupsController',['$scope', '$state
     	$scope.create = function(isValid){
     		if(isValid){
     			var meetup = new Meetup($scope.meetup);
-    			meetup.$save(function(response)){
+    			meetup.$save(function(response){
     				$location.path('meetups/'+response._id);
     			}
-    			$scope.recipe ={};	
+                );
+    			$scope.meetup ={};
 
     		}else{
     			$scope.submitted = true;
@@ -71,7 +72,7 @@ angular.module('mean.meetups').controller('MeetupsController',['$scope', '$state
  					meetup.updated=[];
  				}
 
- 				meetup.updated.push(new Date().getTime();
+ 				meetup.updated.push(new Date().getTime());
 
  				meetup.$update(function(){
  					$location.path('meetup/'+meetup._id);
@@ -99,5 +100,5 @@ angular.module('mean.meetups').controller('MeetupsController',['$scope', '$state
 
     	};
 
-	};
+	}
 ]);
