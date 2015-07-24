@@ -14,7 +14,7 @@ angular.module('mean.meetup').config(['$stateProvider',
 				templateUrl: 'meetup/views/create.html'
 			})
 			.state('edit meetup',{
-				url: '/meetup/:meetupId/edit',
+				url: '/meetups/:meetupId/edit',
 				templateUrl: 'meetup/views/edit.html'
 			})
 			.state('meetup by id',{
