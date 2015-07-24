@@ -13,18 +13,18 @@ var mongoose = require('mongoose'),
 var ProjekatSchema = new Schema({
   naziv: {
     type: String,
-    //required: true,
+    required: true,
     unique: true,
     trim: true
   },
   opis: {
     type: String,
-    //required: true,
+    required: true,
     trim: true
   },
   sadrzaj: {
     type: String,
-    //required: true,
+    required: true,
     trim: true
   },
   //////////////////////////////////////
@@ -77,7 +77,7 @@ ProjekatSchema.path('naziv').validate(function(naziv) {
 ProjekatSchema.statics.load = function(id, cb) {
   this.findOne({
     _id: id
-  }).populate('user', 'name username').exec(cb);
+  })/*.populate('user', 'name username')*/.exec(cb);
 };
 
 mongoose.model('Projekat', ProjekatSchema);

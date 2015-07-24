@@ -10,8 +10,8 @@ module.exports = function(Projekti, app, auth, database) {
     .post(/*auth.requiresLogin, */projekti.create);
   app.route('/api/projekat/:projekatId')
     .get(auth.isMongoId, projekti.show)
-    .put(auth.isMongoId, auth.requiresLogin, /*hasAuthorization, hasPermissions, */projekti.update)
-    .delete(auth.isMongoId, auth.requiresLogin, /*hasAuthorization, */projekti.destroy);
+    .put(auth.isMongoId, /*auth.requiresLogin,*/ /*hasAuthorization, hasPermissions, */projekti.update)
+    .delete(auth.isMongoId, /*auth.requiresLogin,*/ /*hasAuthorization, */projekti.destroy);
 
   // Finish with setting up the articleId param
   app.param('projekatId', projekti.projekat);

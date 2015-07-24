@@ -1,6 +1,6 @@
-<section data-ng-controller="ProjekatController">
-	<h1>Dodavanje novog projekta!!!</h1>
-	<form name="projekatForm" data-ng-submit="create(true)">
+<section data-ng-controller="ProjekatController" data-ng-init="findOne()">
+	<h1>Izmena projekta!!!</h1>
+	<form name="projekatForm" data-ng-submit="update(true)">
 	<table border="3">
 		<tr>
 			<td>Naziv:</td>

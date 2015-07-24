@@ -93,7 +93,8 @@ module.exports = function(Projekti) {
                 }
 
                 Projekti.events.publish('update', {
-                    description: req.user.name + ' updated ' + req.body.naziv + ' projekat.'
+                    description: "update projekta sa nazivom " + projekat.naziv    
+                    //description: req.user.name + ' updated ' + req.body.naziv + ' projekat.'
                 });
 
                 res.json(projekat);
@@ -114,7 +115,8 @@ module.exports = function(Projekti) {
                 }
 
                 Projekti.events.publish('remove', {
-                    description: req.user.name + ' deleted ' + projekat.naziv + ' projekat.'
+                    description: "remove projekta sa nazivom " + projekat.naziv
+                    //description: req.user.name + ' deleted ' + projekat.naziv + ' projekat.'
                 });
 
                 res.json(projekat);
@@ -126,7 +128,8 @@ module.exports = function(Projekti) {
         show: function(req, res) {
 
             Projekti.events.publish('view', {
-                description: req.user.name + ' read ' + req.projekat.naziv + ' projekat.'
+                description: "prikaz jednog projekta"
+                //description: req.user.name + ' read ' + req.projekat.naziv + ' projekat.'
             });
 
             res.json(req.projekat);

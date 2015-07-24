@@ -10,6 +10,10 @@ angular.module('mean.projekat').config(['$stateProvider',
     .state('dodaj projekat', {
       url: '/projekat/dodaj',
       templateUrl: 'projekat/views/dodaj.html'
+    })
+    .state('izmeni projekat', {
+      url: '/projekat/izmeni/:projekatId',
+      templateUrl: 'projekat/views/izmeni.html'
     });
   }
 ]);
