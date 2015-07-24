@@ -1,0 +1,17 @@
+<section data-ng-controller="LecturesController" data-ng-init="find()">
+  <ul class="lectures unstyled">
+    <li data-ng-repeat="lecture in lectures">
+      <h2>
+        <a data-ng-href="/lectures/{{lecture._id}}">{{lecture.name}}</a>
+        
+          <a class="btn" href="/lectures/{{lecture._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="remove(lecture);">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+      </h2>
+    </li>
+  </ul>
+  <h1 data-ng-hide="!lecture || lectures.length">No meetups yet. <br> Why don't you <a href="/lectures/create">Create One</a>?</h1>
+</section>

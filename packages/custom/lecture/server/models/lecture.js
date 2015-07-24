@@ -18,7 +18,8 @@ var LectureSchema = new Schema({
 		type: [String]
 	},
 	accepted: {
-		type: Boolean
+		type: Boolean,
+		default: false
 	},
 	speakers: {
 		type: [String]
