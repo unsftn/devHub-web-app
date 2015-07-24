@@ -10,7 +10,7 @@ module.exports = function(Meetups){
 
 	return {
 
-		recipe: function(req, res, next, id){
+		meetup: function(req, res, next, id){
 			Meetup.load(id, function(err, meetup) {
                 if (err) return next(err);
                 if (!meetup) return next(new Error('Failed to load meetup ' + id));

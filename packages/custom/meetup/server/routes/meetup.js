@@ -16,7 +16,7 @@ module.exports = function(Meetups, app, auth) {
     .delete(meetups.destroy);
 
   // Finish with setting up the articleId param
-  //app.param('meetupId', meetups.meetup);
+  app.param('meetupId', meetups.meetup);
 };
 
 /*'use strict';
