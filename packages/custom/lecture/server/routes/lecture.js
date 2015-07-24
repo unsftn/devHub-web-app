@@ -1,27 +1,20 @@
 'use strict';
 
-/* jshint -W098 */
-// The Package is past automatically as first parameter
-module.exports = function(Lecture, app, auth, database) {
+// Article authorization helpers
 
-  app.get('/api/lecture/example/anyone', function(req, res, next) {
-    res.send('Anyone can access this');
-  });
+module.exports = function(Lectures, app, auth) {
 
-  app.get('/api/lecture/example/auth', auth.requiresLogin, function(req, res, next) {
-    res.send('Only authenticated users can access this');
-  });
+  var lectures = require('../controllers/lecture')(Lectures);
 
-  app.get('/api/lecture/example/admin', auth.requiresAdmin, function(req, res, next) {
-    res.send('Only users with Admin role can access this');
-  });
+  app.route('/api/lectures')
+    .get(lectures.all)
+    .post(lectures.create);
 
-  app.get('/api/lecture/example/render', function(req, res, next) {
-    Lecture.render('index', {
-      package: 'lecture'
-    }, function(err, html) {
-      //Rendering a view from the Package server/views
-      res.send(html);
-    });
-  });
+  app.route('/api/lectures/:lectureId')
+    .get(lectures.show)
+    .put(lectures.update)
+    .delete(lectures.destroy);
+
+  // Finish with setting up the articleId param
+  app.param('lectureId', lectures.lecture);
 };

@@ -5,22 +5,25 @@ var mongoose = require('mongoose'),
 
 
 var LectureSchema = new Schema({
-
 	name: {
 		type: String
 	},
-	comments: {
-		type: [String] 
-	},
-	date: {
+	description: {
 		type: String
 	},
-	location:{
+	link: {
 		type: String
 	},
-	lectures:{
-		type: [LectureSchema]
+	keywords: {
+		type: [String]
+	},
+	accepted: {
+		type: Boolean
+	},
+	speakers: {
+		type: [String]
 	}
+
 });
 
 

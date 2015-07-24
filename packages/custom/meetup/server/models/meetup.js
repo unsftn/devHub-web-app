@@ -18,10 +18,11 @@ var MeetupSchema = new Schema({
 	location:{
 		type: String
 	},
-	lectures: [{
-		type: Schema,
-	    ref: 'Lecture'
-	}]
+	lectures:{
+		type: [String]
+		//type: [LectureSchema],
+		//ref: 'Lecture'
+	}
 
 });
 
