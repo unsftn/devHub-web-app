@@ -1,0 +1,5 @@
+clanak - upload, youtube
+
+dokument - link, naziv, 
+clanak - [autori - osobe], [editori], [revieweri], naslov, absstrakt, [tagovi], [dokumenti(slobodan tekst, linkovi ka youtube, pdfovi)], status (odobren, editovan, itd.), [komentari], ocena
+casopis - broj, godina, [clanci] 

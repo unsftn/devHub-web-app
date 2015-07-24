@@ -1,0 +1,12 @@
+<section data-ng-controller="FilesController">
+  <form name="uploadFileForm" role="form" data-ng-submit="create(uploadFileForm.$valid)" novalidate>
+    <div>
+      <input type="file" id="fileInputField" accept="application/pdf" data-ng-change="onChangeInputField(this)" style="color:white">
+      <input type="text" data-ng-model="file">
+
+      <button id="clear" ng-click="clearInputField(this)" style="color:black">Clear</button>
+      <input type="submit">
+    </div>
+  </form>
+
+</section>
