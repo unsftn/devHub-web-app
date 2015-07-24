@@ -4,10 +4,10 @@
 module.exports = function(Seminars, app, auth, database) {
   var seminars = require('../controllers/seminar.server.controller')(Seminars);
 
-  app.route('/api/seminar')
+  app.route('/api/seminars')
     .get(seminars.all)
     .post(/*auth.requiresLogin, */seminars.create);
-  app.route('/api/seminar/:seminarId')
+  app.route('/api/seminars/:seminarId')
     .get(auth.isMongoId, seminars.show)
     .put(auth.isMongoId, auth.requiresLogin, /*hasAuthorization, hasPermissions, */seminars.update)
     .delete(auth.isMongoId, auth.requiresLogin, /*hasAuthorization, */seminars.destroy);

@@ -13,19 +13,33 @@ var mongoose = require('mongoose'),
 var SeminarSchema = new Schema({
   title: {
     type: String,
-    //required: true,
-   // unique: true,
+    required: true,
+    unique: true,
     trim: true
   },
   
   startDate: {
-    type: Date
-    
+    type: Date,
+  //  required: true,
+   
+  },
+
+  endDate: {
+    type: Date,
+   // required: true
 
   },
-  endDate: {
-    type: Date
-    
+
+  candidates: {
+    type: [String]
+  },
+
+  participants: {
+    type: [String]
+  },
+
+  workshops: {
+    type: [String]
   }
  
 });
@@ -33,10 +47,18 @@ var SeminarSchema = new Schema({
 /**
  * Validations
  */
-/*SeminarSchema.path('title').validate(function(title) {
+SeminarSchema.path('title').validate(function(title) {
   return !!title;
 }, 'Naziv ne sme biti prazan');
-*/
+
+SeminarSchema.path('endDate').validate(function(endDate) {
+  return !!endDate;
+}, 'Datum kraja ne sme biti prazan');
+
+SeminarSchema.path('startDate').validate(function(startDate) {
+  return !!startDate;
+}, 'Datum početka ne sme biti prazan');
+
 
 SeminarSchema.statics.load = function(id, cb) {
   this.findOne({

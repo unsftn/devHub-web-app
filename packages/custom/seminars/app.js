@@ -18,8 +18,14 @@ Seminars.register(function(app, auth, database) {
 
   //We are adding a link to the main menu for all authenticated users
   Seminars.menus.add({
-    title: 'seminars example page',
-    link: 'seminars example page',
+    title: 'Seminars',
+    link: 'all seminars',
+    roles: ['authenticated'],
+    menu: 'main'
+  });
+  Seminars.menus.add({
+    title: 'Create seminar',
+    link: 'create seminar',
     roles: ['authenticated'],
     menu: 'main'
   });
