@@ -31,7 +31,7 @@
     "forever": "latest",
     "gridfs-stream": "latest",
     "jsonwebtoken": "latest",
-    "lodash": "latest",
+    "lodash": "https://registry.npmjs.org/lodash/-/lodash-3.10.0.tgz",
     "meanio": "latest",
     "mongoose": "latest",
     "morgan": "latest",
