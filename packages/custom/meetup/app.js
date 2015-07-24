@@ -19,8 +19,7 @@ Meetup.register(function(app, auth, database) {
   //We are adding a link to the main menu for all authenticated users
   Meetup.menus.add({
     title: 'meetup example page',
-    link: 'meetup example page',
-    roles: ['authenticated'],
+    link: 'all meetups',
     menu: 'main'
   });
   

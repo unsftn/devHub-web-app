@@ -6,12 +6,12 @@ angular.module('mean.meetup').config(['$stateProvider',
 		$stateProvider
 			.state('all meetups',{
 				url: '/meetups',
-				templateUrl: 'meetups/views/list.html'
+				templateUrl: 'meetup/views/list.html'
 				// Nedostaje resolve za proveru logovanja
 			})
 			.state('create meetup',{
 				url: '/meetups/create',
-				templateUrl: 'meetups/views/create.html'
+				templateUrl: 'meetup/views/create.html'
 			})
 			.state('edit meetup',{
 				url: '/meetup/:meetupId/edit',
@@ -19,7 +19,7 @@ angular.module('mean.meetup').config(['$stateProvider',
 			})
 			.state('meetup by id',{
 				url: '/meetups/:meetupId',
-				templateUrl: 'meetups/views/view.html'
+				templateUrl: 'meetup/views/view.html'
 			});
 
 	}
