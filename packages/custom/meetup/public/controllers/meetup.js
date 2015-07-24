@@ -31,7 +31,7 @@ angular.module('mean.meetup').controller('MeetupsController',['$scope', '$stateP
 
     	$scope.create = function(isValid){
     		if(isValid){
-    			var meetup = new Meetup($scope.meetup);
+    			var meetup = new Meetups($scope.meetup);
     			meetup.$save(function(response){
     				$location.path('meetups/'+response._id);
     			}
