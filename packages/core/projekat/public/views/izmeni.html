@@ -1,0 +1,32 @@
+<section data-ng-controller="ProjekatController" data-ng-init="findOne()">
+	<h1>Izmena projekta!!!</h1>
+	<form name="projekatForm" data-ng-submit="update(true)">
+	<table border="3">
+		<tr>
+			<td>Naziv:</td>
+			<td><input type="text" data-ng-model="projekat.naziv"></td>
+		</tr>
+		<tr>
+			<td>Opis:</td>
+			<td><input type="text" data-ng-model="projekat.opis"></td>
+		</tr>
+		<tr>
+			<td>Sadrzaj:</td>
+			<td><input type="text" data-ng-model="projekat.sadrzaj"></td>
+		</tr>
+		<tr>
+			<td>Link repozitorijuma:</td>
+			<td><input type="text" data-ng-model="projekat.linkRepozitorijuma"></td>
+		</tr>
+		<tr>
+			<td>Status:</td>
+			<td><input type="text" data-ng-model="projekat.status"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="Dodaj">
+			</td>
+		</tr>
+	</table>
+	</form>
+</section>
