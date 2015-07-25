@@ -1,0 +1,18 @@
+<section data-ng-controller="MeetupsController" data-ng-init="find()">
+  <ul class="meetups unstyled">
+    <li data-ng-repeat="meetup in meetups">
+      <h2>
+        <a data-ng-href="/meetups/{{meetup._id}}">{{meetup.name}}</a>
+        
+          <a class="btn" href="/meetups/{{meetup._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="remove(meetup);">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+      </h2>
+      <div>{{meetup.location}}</div>
+    </li>
+  </ul>
+  <h1 data-ng-hide="!meetup || meetups.length">No meetups yet. <br> Why don't you <a href="/meetups/create">Create One</a>?</h1>
+</section>
