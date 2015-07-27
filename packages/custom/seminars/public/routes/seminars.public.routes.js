@@ -30,6 +30,24 @@ angular.module('mean.seminars').config(['$stateProvider',
 						return MeanUser.checkLoggedin();
 					}
 				}
+			})
+			.state('edit seminar', {
+				url: '/seminars/:seminarId/edit',
+				templateUrl: '/seminars/views/seminars.public.edit.html',
+				resolve: {
+					loggedin: function(MeanUser) {
+						return MeanUser.checkLoggedin();
+					}
+				}
+			})
+			.state('application form', {
+				url: '/seminars/apply',
+				templateUrl: '/seminars/views/seminars.public.apply.html',
+				resolve: {
+					loggedin: function(MeanUser){
+						return MeanUser.checkLoggedin();
+					}
+				}
 			});
 	}
 ]);

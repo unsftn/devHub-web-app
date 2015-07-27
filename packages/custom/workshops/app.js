@@ -18,8 +18,14 @@ Workshops.register(function(app, auth, database) {
 
   //We are adding a link to the main menu for all authenticated users
   Workshops.menus.add({
-    title: 'workshops example page',
-    link: 'workshops example page',
+    title: 'Radionice',
+    link: 'all workshops',
+    roles: ['authenticated'],
+    menu: 'main'
+  });
+  Workshops.menus.add({
+    title: 'Kreiraj radionicu',
+    link: 'create workshop',
     roles: ['authenticated'],
     menu: 'main'
   });

@@ -18,7 +18,7 @@ Seminars.register(function(app, auth, database) {
 
   //We are adding a link to the main menu for all authenticated users
   Seminars.menus.add({
-    title: 'Seminars',
+    title: 'Seminari',
     link: 'all seminars',
     roles: ['authenticated'],
     menu: 'main'
@@ -29,6 +29,15 @@ Seminars.register(function(app, auth, database) {
     roles: ['authenticated'],
     menu: 'main'
   });
+  Seminars.menus.add({
+    title: 'apply',
+    link: 'application form',
+    roles: ['authenticated'],
+    menu: 'main'
+  });
+ 
+  
+  
   
   Seminars.aggregateAsset('css', 'seminars.css');
 

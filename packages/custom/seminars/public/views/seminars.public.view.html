@@ -1,3 +1,5 @@
 <section data-ng-controller="SeminarsController" data-ng-init="findOne()">
-	<p>{{ seminar.tutle}}</p>
+	<p> {{ seminar.title }} </p>
+	<p> {{ seminar.startDate | date:'dd-MM-yyyy' }} </p>
+	<p> {{ seminar.endDate | date:'dd-MM-yyyy'}} </p>
 </section>

@@ -1,9 +1,11 @@
 'use strict';
 
-angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$stateParams', '$location', 'Global', 'Seminars',
-		function($scope, $stateParams, $location, Global, Seminars) {
+angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$stateParams', '$location', 'Global', 'Seminars','Workshops',
+		function($scope, $stateParams, $location, Global, Seminars, Workshops) {
 			
 			$scope.global = Global;
+
+      $scope.today=new Date();
 
 			 $scope.create = function(isValid) {
     			  if (isValid) {
@@ -22,7 +24,7 @@ angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$st
     		};
 		
 
-			$scope.remove = function(){
+			$scope.remove = function(seminar){
 				if (seminar) {
        				 seminar.$remove(function(response) {
        				   for (var i in $scope.seminars) {
@@ -56,10 +58,7 @@ angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$st
 			};
 
 			$scope.find = function() {
-				 $scope.nesto="pre";
      			 Seminars.query(function(seminars) {
-     			 console.log("!!!!! "+JSON.stringify(seminars));
-     			 $scope.nesto1="posle";
       			  $scope.seminars = seminars;
      			 });
   			};
@@ -71,6 +70,12 @@ angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$st
 					$scope.seminar = seminar;
 				});
 			};
+
+      $scope.workshops = function() {
+          Workshops.query(function(workshops){
+            $scope.workshops = workshops;
+          });
+      };
 	}
 
 ]);

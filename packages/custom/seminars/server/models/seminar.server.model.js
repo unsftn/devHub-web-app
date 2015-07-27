@@ -20,13 +20,13 @@ var SeminarSchema = new Schema({
   
   startDate: {
     type: Date,
-  //  required: true,
+    required: true,
    
   },
 
   endDate: {
     type: Date,
-   // required: true
+    required: true
 
   },
 
