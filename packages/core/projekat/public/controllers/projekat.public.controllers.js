@@ -1,8 +1,8 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$location', 'Global', 'Projekti','$stateParams',
-  function($scope, $location, Global, Projekti, $stateParams) {
+angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$location', 'Global', 'Projekti','$stateParams', 'Prakse',
+  function($scope, $location, Global, Projekti, $stateParams, Prakse) {
     $scope.global = Global;
     $scope.package = {
       name: 'projekat'
@@ -78,5 +78,6 @@ angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$lo
         $scope.projekat = projekat;
       });
     };
+
   }
 ]);

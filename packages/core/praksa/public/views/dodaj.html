@@ -1,0 +1,28 @@
+<section data-ng-controller="PraksaController">
+	<h1>Dodavanje nove prakse!!!</h1>
+	<form name="praksaForm" data-ng-submit="create(true)">
+	<table border="3">
+		<tr>
+			<td>Naziv:</td>
+			<td><input type="text" data-ng-model="praksa.naziv"></td>
+		</tr>
+		<tr>
+			<td>Lokacija:</td>
+			<td><input type="text" data-ng-model="praksa.lokacija"></td>
+		</tr>
+		<tr>
+			<td>Projekti:</td>
+			<td>
+				<select multiple data-ng-init="allProjects()" data-ng-model="praksa.projekti">
+					<option data-ng-repeat="projekat in projekti" value="{{projekat.naziv}}">{{projekat.naziv}}</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="Dodaj">
+			</td>
+		</tr>
+	</table>
+	</form>
+</section>
