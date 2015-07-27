@@ -1,0 +1,21 @@
+<section data-ng-controller="TagsController" data-ng-init="find()">
+  <ul class="articles unstyled">
+    <li data-ng-repeat="tag in tags">
+      <h2>
+        <a data-ng-href="/tags/{{tag._id}}">{{tag.name}}</a>
+
+          <a class="btn" href="/tags/{{tag._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="remove(tag);">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+
+      </h2>
+      <div>{{tag.description}}</div>
+      
+    </li>
+  </ul>
+  <h1><a href="/tags/create">Unesite tag</a></h1>
+  <h1 data-ng-hide="!tags || tags.length">Niste uneli jos ni jedan tag. <br>Zasto ne biste <a href="/tags/create">Uneli jedan</a>?</h1>
+</section>

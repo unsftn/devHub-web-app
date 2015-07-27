@@ -1,0 +1,33 @@
+<section data-ng-controller="DocumentController">
+  <form name="documentForm" class="form-horizontal col-md-6" role="form" data-ng-submit="create(documentForm.$valid)" novalidate>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && documentForm.name.$invalid }">
+      <label mean-token="'create-title'" class="col-md-3 control-label">Naziv</label>
+      <div class="col-md-9">
+        <input name="name" type="text" class="form-control" data-ng-model="document.name" id="name" placeholder="Naziv" required>
+        <div ng-show="submitted && documentForm.name.$invalid" class="help-block">
+          <p ng-show="documentForm.name.$error.required">Naziv je obavezan</p>
+        </div>
+      </div>
+
+    </div>
+<div class="col-md-9">
+      <label mean-token="'create-content'" for="description" class="col-md-3 control-label">Opis:</label>
+</div>
+
+     
+      
+        <label mean-token="'create-link'" for="link" class="col-md-3 control-label">Link:</label>
+      <div class="col-md-9">
+        <input name="link" type="text" class="form-control" data-ng-model="document.link" id="link" placeholder="Link" >
+      </div>
+      
+      <input name="link" type="text" class="form-control" data-ng-model="document.link" id="link" placeholder="Link" data-role="tagsinput">
+      
+    <div class="form-group">
+      <div class="col-md-offset-3 col-md-9">
+        <button mean-token="'create-submit'" type="submit" class="btn btn-info">Napravi</button>
+      </div>
+    </div>
+    <h1><a href="/documents">Svi dokumenti</a></h1>
+  </form>
+</section>

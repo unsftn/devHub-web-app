@@ -1,0 +1,27 @@
+<section data-ng-controller="TagsController">
+  <form name="tagForm" class="form-horizontal col-md-6" role="form" data-ng-submit="create(tagForm.$valid)" novalidate>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.title.$invalid }">
+      <label mean-token="'create-title'" class="col-md-3 control-label">Naziv</label>
+      <div class="col-md-9">
+        <input name="name" type="text" class="form-control" data-ng-model="tag.name" id="name" placeholder="Naziv" required>
+        <div ng-show="submitted && tagFrom.name.$invalid" class="help-block">
+          <p ng-show="tagFrom.name.$error.required">Naziv je obavezan</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && tagForm.description.$invalid }">
+      <label mean-token="'create-content'" for="description" class="col-md-3 control-label">Opis:</label>
+      <div class="col-md-9">
+        <textarea name="description" data-ng-model="tag.description" id="description" cols="30" rows="10" placeholder="Opis" class="form-control"></textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-offset-3 col-md-9">
+        <button mean-token="'create-submit'" type="submit" class="btn btn-info">Napravi</button>
+      </div>
+    </div>
+    <h1><a href="/tags">Svi tagovi</a></h1>
+  </form>
+</section>

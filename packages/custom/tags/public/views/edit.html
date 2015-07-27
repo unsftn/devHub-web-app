@@ -1,0 +1,25 @@
+<section data-ng-controller="TagsController" data-ng-init="findOne()">
+  <form name="tagForm" class="form-horizontal col-md-6" role="form" data-ng-submit="update(tagForm.$valid)" novalidate>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && tagForm.name.$invalid }">
+      <label mean-token="'edit-title'" for="name" class="col-md-2 control-label">Naziv</label>
+      <div class="col-md-10">
+        <input name="name" type="text" class="form-control" data-ng-model="tag.name" id="name" placeholder="Naziv" required>
+        <div ng-show="submitted && tagForm.name.$invalid" class="help-block">
+          <p ng-show="tagForm.name.$error.required">Naziv je obavezan</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && tagForm.name.$invalid }">
+      <label mean-token="'edit-content'" for="description" class="col-md-2 control-label">Opis</label>
+      <div class="col-md-10">
+        <textarea name="description" data-ng-model="tag.description" id="content" cols="30" rows="10" placeholder="Opis" class="form-control"></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <button mean-token="'edit-submit'" type="submit" class="btn btn-default">Izmeni</button>
+      </div>
+    </div>
+  </form>
+</section>

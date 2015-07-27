@@ -4,10 +4,13 @@
 angular.module('mean.document').factory('Document', ['$resource',
   function($resource) {
     return $resource('api/documents/:documentId', {
-      articleId: '@_id'
+      documentId: '@_id'
     }, {
       update: {
         method: 'PUT'
+      },
+      remove: {
+        method: 'DELETE'
       }
     });
   }

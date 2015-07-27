@@ -12,16 +12,19 @@ var mongoose = require('mongoose'),
  */
 var ArticleDHSchema = new Schema({
 	authors: {
-	    type: [Schema.ObjectId],
-    	ref: 'User',
+	    //type: [Schema.ObjectId],
+    	//ref: 'User',
+    	type: String,
 		required: 'Morate uneti barem jednog autora.'
 	},
 	editors: {
-	    type: [Schema.ObjectId],
+	    //type: [Schema.ObjectId],
+	    type: String,
     	ref: 'User'
 	},
 	reviewers: {
-	    type: [Schema.ObjectId],
+	    //type: [Schema.ObjectId],
+	    type: String,
     	ref: 'User'
 	},
 	title: {
