@@ -29,8 +29,9 @@ var DocumentSchema = new Schema({
 		trim: true,
 	},
 	file: {
-		type: Schema.ObjectId,
-    	ref: 'FileDH',
+		//type: Schema.ObjectId,
+		type:String
+    	//ref: 'FileDH',
 	}
 });
 

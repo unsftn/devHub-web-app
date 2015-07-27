@@ -1,0 +1,13 @@
+<section data-ng-controller="TagsController" data-ng-init="findOne()">
+  <h2>{{tag.name}}</h2>
+  <div>
+    <a class="btn" href="/tags/{{tag._id}}/edit">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn" data-ng-click="remove(tag);">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div>{{tag.description}}</div>
+  <h1><a href="/tags">Svi tagovi</a></h1>
+</section>

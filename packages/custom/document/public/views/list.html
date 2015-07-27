@@ -1,0 +1,22 @@
+<section data-ng-controller="DocumentController" data-ng-init="find()">
+  <ul class="articles unstyled">
+    <li data-ng-repeat="document in documents">
+      <h2>
+        <a data-ng-href="/documents/{{document._id}}">{{document.name}}</a>
+
+          <a class="btn" href="/documents/{{document._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="remove(document);">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+
+      </h2>
+      <div>{{document.description}}</div>
+      <div><a href="{{document.link}}">Link</a></div>
+      <div>{{document.file}}</div>
+    </li>
+  </ul>
+  <h1><a href="/documents/create">Unesite dokument</a></h1>
+  <h1 data-ng-hide="!document || document.length">Niste uneli jos ni jedan document. <br>Zasto ne biste <a href="/documents/create">uneli jedan</a>?</h1>
+</section>

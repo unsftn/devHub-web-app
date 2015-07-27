@@ -11,8 +11,9 @@ var Document = new Module('document');
  * All MEAN packages require registration
  * Dependency injection is used to define required modules
  */
-Document.register(function(app, auth, database) {
 
+Document.register(function(app, auth, database) {
+  
   //We enable routing. By default the Package Object is passed to the routes
   Document.routes(app, auth, database);
 
@@ -23,6 +24,8 @@ Document.register(function(app, auth, database) {
     roles: ['authenticated'],
     menu: 'main'
   });
+  
+  
   
   Document.aggregateAsset('css', 'document.css');
 

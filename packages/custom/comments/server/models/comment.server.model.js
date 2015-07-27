@@ -29,7 +29,8 @@ var CommentsSchema = new Schema({
 		default: Date.now
 	},
 	author: {
-		type: Schema.ObjectId,
+		//type: Schema.ObjectId,
+		type: String,
    		ref: 'User'
 	}
 
