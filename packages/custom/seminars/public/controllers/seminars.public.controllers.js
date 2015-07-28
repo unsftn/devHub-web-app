@@ -13,7 +13,8 @@ angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$st
      			  var seminar = new Seminars($scope.seminar);
 
       			  seminar.$save(function(response) {
-       			      $location.path('seminars/' + response._id);
+       			    //  $location.path('seminars/' + response._id);
+                $location.path('seminars');
       			  }, function() {$location.path('login');});
 
       			  $scope.seminar = {};
@@ -50,7 +51,7 @@ angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$st
       			  	seminar.updated.push(new Date().getTime());
 
        				seminar.$update(function() {
-       				   $location.path('seminars/' + seminar._id);
+       				   $location.path('seminars');
       				});
      			  } else {
      				   $scope.submitted = true;
@@ -75,7 +76,7 @@ angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$st
           Workshops.query(function(workshops){
             $scope.workshops = workshops;
           });
-      };
+      };  
 	}
 
 ]);

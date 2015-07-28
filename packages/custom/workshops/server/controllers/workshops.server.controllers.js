@@ -67,7 +67,7 @@ module.exports = function(Workshops) {
 		all: function(req,res) {
         
             Workshop.find({}, function(err, data) {
-			console.log(err);
+			
                 if (err) {
                     return res.status(500).json({
                         error: 'Nemoguće je izlistati seminare'

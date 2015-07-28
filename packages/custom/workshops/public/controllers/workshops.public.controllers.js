@@ -13,7 +13,7 @@ angular.module('mean.workshops').controller('WorkshopsController', ['$scope', '$
      			  var workshop = new Workshops($scope.workshop);
 
       			  workshop.$save(function(response) {
-       			      $location.path('workshops/' + response._id);
+       			      $location.path('workshops');
       			  }, function() {$location.path('login');});
 
       			  $scope.workshop = {};
@@ -50,7 +50,7 @@ angular.module('mean.workshops').controller('WorkshopsController', ['$scope', '$
       			  	workshop.updated.push(new Date().getTime());
 
        				workshop.$update(function() {
-       				   $location.path('workshops/' + workshop._id);
+       				   $location.path('workshops');
       				});
      			  } else {
      				   $scope.submitted = true;
@@ -70,6 +70,20 @@ angular.module('mean.workshops').controller('WorkshopsController', ['$scope', '$
 					$scope.workshop = workshop;
 				});
 			};
-	}
+	
 
+      $scope.myVar=true;
+
+      $scope.toggle = function() {
+        $scope.myVar = !$scope.myVar;
+      }
+
+      $scope.technology=[];
+
+      $scope.addTechnology = function() {
+        $scope.technology.push($scope.newTech);
+      }
+
+
+}
 ]);

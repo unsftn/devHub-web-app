@@ -6,7 +6,7 @@ angular.module('mean.workshops').config(['$stateProvider',
 		$stateProvider
 			.state('all workshops',{
 				url: '/workshops',
-				templateUrl: '/workshops/views/workshops.public.list.html',
+				templateUrl: '/workshops/views/list.html',
 				resolve: {
 					loggedin: function(MeanUser) {
 						return MeanUser.checkLoggedin();
@@ -15,16 +15,16 @@ angular.module('mean.workshops').config(['$stateProvider',
 				})
 			.state('create workshop', {
 				url: '/workshops/create',
-				templateUrl: '/workshops/views/workshops.public.create.html',
+				templateUrl: '/workshops/views/create.html',
 				resolve: {
 					loggedin: function(MeanUser) {
 						return MeanUser.checkLoggedin();
 					}
 				}
 				})
-			.state('workshop by id', {
-				url: '/workshops/:workshopId',
-				templateUrl: '/workshops/views/workshops.public.view.html',
+			.state('edit workshop', {
+				url: '/workshops/:workshopId/edit',
+				templateUrl: '/workshops/views/edit.html',
 				resolve: {
 					loggedin: function(MeanUser) {
 						return MeanUser.checkLoggedin();

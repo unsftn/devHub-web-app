@@ -24,19 +24,11 @@ Seminars.register(function(app, auth, database) {
     menu: 'main'
   });
   Seminars.menus.add({
-    title: 'Create seminar',
+    title: 'Kreiraj seminar',
     link: 'create seminar',
     roles: ['authenticated'],
     menu: 'main'
   });
-  Seminars.menus.add({
-    title: 'apply',
-    link: 'application form',
-    roles: ['authenticated'],
-    menu: 'main'
-  });
- 
-  
   
   
   Seminars.aggregateAsset('css', 'seminars.css');

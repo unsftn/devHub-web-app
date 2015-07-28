@@ -1,0 +1,36 @@
+<section ng-controller="SeminarsController" data-ng-init="findOne()">
+	<label> Prijava na seminar {{ seminar.title }}</label>
+	</br></br>
+	<div class="form-group">
+	<label> Ime </label>
+		<input name="ime" type="text" class="form-control" >
+	</div>
+
+	<div class="form-group">
+	<label> Prezime </label>
+		<input type="text" name="prezime" class="form-control">
+	</div>
+
+	<div class="form-group">
+	<label> Email </label>
+		<input type="email" name="email" class="form-control">
+	</div>
+
+	<div class="form-group">
+	<label> Godina studija </label>
+		<input type="text" name="datum" class="form-control">
+	</div>
+
+	<div class="form-group">	
+	<label> Prosek </label>
+		<input type="text" name="prosek" class="form-control">
+	</div>
+
+	<div class="form-group">
+	<label> Motivaciono pismo </label>
+		<input type="text" name="motivaciono" class="form-control" >
+	</div>
+	<button mean-token="'create-submit'" type="submit" class="">Prijavi se</button>
+
+</section>
+

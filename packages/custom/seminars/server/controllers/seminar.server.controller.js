@@ -48,7 +48,7 @@ module.exports = function(Seminars) {
             seminar.save(function(err) {
                 if (err) {
                     return res.status(500).json({
-                        error: 'Ne moze da sačuva seminar'
+                        error: 'Ne moze da ažurira seminar'
                     });
                 }
 

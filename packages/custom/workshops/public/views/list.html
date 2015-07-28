@@ -1,0 +1,36 @@
+<section data-ng-controller="WorkshopsController" data-ng-init="find()">
+	<table class="container">
+			<tr>
+			<th>Naziv</th>
+			<th>Datum početka</th>
+			<th>Datum kraja</th>
+			<th>Tehnologije</th>
+			<th>Mentori</th>
+			<th>Izbriši</th>
+			<th>Izmeni</th>
+			</tr>
+			<tr data-ng-repeat="workshop in workshops">
+				<td> {{ workshop.title }} </td>
+				<td> {{ workshop.startDate | date:'dd-MM-yyyy'}} </td>
+				<td> {{ workshop.endDate | date:'dd-MM-yyyy'}}</td>
+				<td> <select multiple>
+					<option >
+					</option> 
+				</td>
+				<td></td>
+				<td>
+					<a class="btn" data-ng-click="remove(workshop);">
+						<i class="glyphicon glyphicon-trash"></i>
+					</a>
+				</td>
+				<td>
+					<a class="btn" href="/workshops/{{workshop._id}}/edit">
+          				<i class="glyphicon glyphicon-edit"></i>
+        			</a>
+				</td>
+			</tr>
+	</table>
+</section>
+
+
+
