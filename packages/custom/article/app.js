@@ -24,8 +24,17 @@ Article.register(function(app, auth, database) {
     menu: 'main'
   });
   
+  //Article.angularDependencies(['angular-redactor']);
+  
   Article.aggregateAsset('css', 'article.css');
-
+  Article.aggregateAsset('js', '../lib/angular-redactor/angular-redactor.js', {
+        absolute: false,
+        global: true
+    });
+  Article.aggregateAsset('js', '../lib/angular-redactor/angular-redactor-9.x.js', {
+        absolute: false,
+        global: true
+    });
   /**
     //Uncomment to use. Requires meanio@0.3.7 or above
     // Save settings with callback

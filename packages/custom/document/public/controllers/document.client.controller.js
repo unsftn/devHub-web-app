@@ -54,7 +54,7 @@ angular.module('mean.document').controller('DocumentController', ['$scope', '$st
           $location.path('documents');
         });
       } else {
-        $scope.document.$remove(function(response) {
+        $scope.tag.$remove(function(response) {
           $location.path('documents');
         });
       }
@@ -84,7 +84,7 @@ angular.module('mean.document').controller('DocumentController', ['$scope', '$st
 
     $scope.findOne = function() {
       Document.get({
-        tagId: $stateParams.documentId
+        documentId: $stateParams.documentId
       }, function(document) {
         $scope.document = document;
       });

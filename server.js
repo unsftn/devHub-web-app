@@ -54,3 +54,5 @@ if ((cluster.isMaster) &&
         console.log('Mean app started on port ' + port + ' (' + process.env.NODE_ENV + ') cluster.worker.id:', workerId);
     });
 }
+
+

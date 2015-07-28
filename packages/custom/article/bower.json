@@ -1,5 +1,7 @@
 {
   "name": "article",
   "version": "0.0.1",
-  "dependencies": {}
+  "dependencies": {
+    "angular-redactor": "~1.1.5"
+  }
 }
