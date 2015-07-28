@@ -14,6 +14,10 @@ angular.module('mean.projekat').config(['$stateProvider',
     .state('izmeni projekat', {
       url: '/projekat/izmeni/:projekatId',
       templateUrl: 'projekat/views/izmeni.html'
+    })
+    .state('dodaj mentore ili ucesnike', {
+      url: '/projekat/dodajMentoreIliUcesnike',
+      templateUrl: 'projekat/views/dodajMenUce.html'
     });
   }
 ]);

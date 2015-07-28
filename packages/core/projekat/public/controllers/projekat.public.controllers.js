@@ -1,8 +1,8 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$location', 'Global', 'Projekti','$stateParams', 'Prakse',
-  function($scope, $location, Global, Projekti, $stateParams, Prakse) {
+angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$location', 'Global', 'Projekti','$stateParams', 'Prakse', 'Ulogaosobe',
+  function($scope, $location, Global, Projekti, $stateParams, Prakse, Ulogaosobe) {
     $scope.global = Global;
     $scope.package = {
       name: 'projekat'
@@ -11,8 +11,10 @@ angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$lo
     $scope.nesto = "nestoAAA";	
 
     $scope.create = function(isValid) {
+      alert($scope.mentori);
       if (isValid) {
         // $scope.projekat.permissions.push('test test');
+        alert($scope.projekat);
         var projekat = new Projekti($scope.projekat);
 
         projekat.$save(function(response) {
@@ -77,6 +79,40 @@ angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$lo
       }, function(projekat) {
         $scope.projekat = projekat;
       });
+    };
+
+    $scope.sveUloge = function() {
+      $scope.nesto = "u find() pre query";  
+      
+      Ulogaosobe.query(function(uloge) {
+        $scope.nesto = "u find() u query!"
+        $scope.uloge = uloge;
+      });
+    };
+
+    $scope.mentori=[];
+    $scope.ucesnici=[];
+
+    $scope.dodajMenUce = function(isValid) {
+      if (isValid) {
+        // $scope.projekat.permissions.push('test test');
+        /*var projekat = new Projekti($scope.projekat);
+
+        projekat.$save(function(response) {
+          $location.path('projekat/lista');
+          //$location.path('Projekti/' + response._id);
+        }, function() {$location.path('login');});
+
+        $scope.projekat = {};*/
+        if ($scope.osoba.uloga=="mentor") {
+          $scope.mentori.push($scope.osoba.ime+" "+$scope.osoba.prezime);  
+        } else if ($scope.osoba.uloga=="ucesnik") {
+          $scope.ucesnici.push($scope.osoba.ime+" "+$scope.osoba.prezime);
+        }
+      } else {
+        $scope.submitted = true;
+      }
+
     };
 
   }

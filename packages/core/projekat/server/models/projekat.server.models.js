@@ -31,9 +31,19 @@ var ProjekatSchema = new Schema({
   //ODRADTI SLEDECE ATRIBUTE KOJI TREBA DA BUDU LISTE -->OSOBA<--
   
   //-----MENTORI
+  mentori: {
+    type: [String],
+    trim: true,
+    default: ""
+  },
   
   //-----UCESNICI
-  
+  ucesnici: {
+    type: [String],
+    trim: true,
+    default: ""
+  },
+
   //////////////////////////////////////
   datumPocetka: {
     type: Date,

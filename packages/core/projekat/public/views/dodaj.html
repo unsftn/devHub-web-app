@@ -1,5 +1,8 @@
 <section data-ng-controller="ProjekatController">
 	<h1>Dodavanje novog projekta!!!</h1>
+	<table>
+	<tr>
+	<td>
 	<form name="projekatForm" data-ng-submit="create(true)">
 	<table border="3">
 		<tr>
@@ -13,6 +16,22 @@
 		<tr>
 			<td>Sadrzaj:</td>
 			<td><input type="text" data-ng-model="projekat.sadrzaj"></td>
+		</tr>
+		<tr>
+			<td>Mentori:</td>
+			<td>
+				<select multiple data-ng-model="projekat.mentori">
+					<option data-ng-repeat="mentor in mentori" value="{{mentor}}">{{mentor}}</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Ucesnici:</td>
+			<td>
+				<select multiple data-ng-model="projekat.ucesnici">
+					<option data-ng-repeat="ucesnik in ucesnici" value="{{ucesnik}}">{{ucesnik}}</option>
+				</select>
+			</td>
 		</tr>
 		<tr>
 			<td>Link repozitorijuma:</td>
@@ -29,4 +48,37 @@
 		</tr>
 	</table>
 	</form>
+	</td>
+	
+	<td>
+	<form name="dodajMenUceForm" data-ng-submit="dodajMenUce(true)">
+	<table border="3">
+		<tr>
+			<th colspan="2">Dodavanje mentora/ucesnika</th>
+		</tr>
+		<tr>
+			<td>Ime:</td>
+			<td><input type="text" data-ng-model="osoba.ime"></td>
+		</tr>
+		<tr>
+			<td>Prezime:</td>
+			<td><input type="text" data-ng-model="osoba.prezime"></td>
+		</tr>
+		<tr>
+			<td>Uloga:</td>
+			<td>
+				<select data-ng-init="sveUloge()" data-ng-model="osoba.uloga">
+					<option data-ng-repeat="uloga in uloge" value="{{uloga.naziv}}">{{uloga.naziv}}</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="Dodaj">
+			</td>
+		</tr>
+	</table>
+	</form>
+	</td>
+	</table>
 </section>
