@@ -124,21 +124,6 @@ angular.module('mean.meetup').controller('MeetupsController',['$scope', '$stateP
 
            }
 
-
-            for(var i in lectures.length){
-                console.log("2.Usao u petlju "+lectures[i].name);
-               // if(lectures[i].SELECTED=='Y'){
-                 //   meetup.lectures.push(lectures[i].name);
-                   // console.log(lectures[i].name);
-                 //}
-                if(lectures[i].selected == true){
-                   meetup.lectures.push(lectures[i].name);
-                    console.log(lectures[i].name); 
-                }
-
-
-            }
-
         };
 
 
