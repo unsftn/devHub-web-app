@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('mean.meetup').controller('MeetupsController',['$scope', '$stateParams', '$location', 'Global', 'Meetups', 'MeanUser', 'Circles',
+angular.module('mean.meetup').controller('MeetupsController',['$scope', '$stateParams', '$location', 'Global', 'Meetups', 'Lectures','MeanUser', 'Circles',
 
-	function($scope, $stateParams, $location, Global, Meetups, MeanUser, Circles){
+	function($scope, $stateParams, $location, Global, Meetups,Lectures, MeanUser, Circles){
 		$scope.global = Global;
 
 		//$scope.hasAuthorization = funtion(article){
@@ -99,6 +99,55 @@ angular.module('mean.meetup').controller('MeetupsController',['$scope', '$stateP
     		});
 
     	};
+
+
+
+        $scope.checkSelectedLectures = function(lectures){
+            if(!$scope.meetup.lectures){
+                $scope.meetup.lectures=[];
+            }
+            var meetup = $scope.meetup;
+            console.log("OVDEEE SAAAAAM ");
+           console.log(JSON.stringify(meetup));
+           console.log("Duzina niza lectures je "+lectures.length);
+
+           for(var i=0; i<lectures.length; i++){
+                 console.log("1.Usao u petlju "+lectures[i].name);
+               // if(lectures[i].SELECTED=='Y'){
+                 //   meetup.lectures.push(lectures[i].name);
+                   // console.log(lectures[i].name);
+                 //}
+                if(lectures[i].selected == true){
+                   meetup.lectures.push(lectures[i].name);
+                    console.log(lectures[i].name); 
+                }
+
+           }
+
+
+            for(var i in lectures.length){
+                console.log("2.Usao u petlju "+lectures[i].name);
+               // if(lectures[i].SELECTED=='Y'){
+                 //   meetup.lectures.push(lectures[i].name);
+                   // console.log(lectures[i].name);
+                 //}
+                if(lectures[i].selected == true){
+                   meetup.lectures.push(lectures[i].name);
+                    console.log(lectures[i].name); 
+                }
+
+
+            }
+
+        };
+
+
+        $scope.allLectures = function(){
+            Lectures.query(function(lectures){
+                $scope.lectures = lectures;
+            });
+
+        };
 
 	}
 ]);

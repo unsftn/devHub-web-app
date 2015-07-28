@@ -22,23 +22,23 @@
       </div>
     </div>
 
+
+    <div  data-ng-init = "allLectures()">
+      <fieldset data-role="controlgroup">
+        <legend>Select lectures for this meetup</legend>
+          <label ng-repeat="lecture in lectures">
+           <input type="checkbox" name="{{lecture.name}}" id="{{lecture.name}}"  checklist-model="meetup.lectures" checklist-value="lecture.name" ng-model="lecture.selected">
+           <label for="{{lecture.name}}">{{lecture.name}}</label>
+          </label>
+      </fieldset>
+   </div>
+
     <div class="form-group">
       <div class="col-md-offset-3 col-md-9">
-        <button mean-token="'create-submit'" type="submit" class="btn btn-info">Submit</button>
+        <button mean-token="'create-submit'" type="submit" class="btn btn-info" ng-click="checkSelectedLectures(lectures)">Submit</button>
       </div>
     </div>
   </form>
 
     
-</section>
-<section>
-<div data-ng-controller="LecturesController" data-ng-init = "find()">
-      <fieldset data-role="controlgroup">
-        <legend>Select lectures for this meetup</legend>
-          <label ng-repeat="lecture in lectures">
-           <input type="checkbox" name="{{lecture.name}}" id="{{lecture.name}}" ng-model="lectures[lecture.name]">
-           <label for="{{lecture.name}}">{{lecture.name}}</label>
-          </label>
-      </fieldset>
-</div>
 </section>
