@@ -10,7 +10,7 @@ angular.module('mean.meetup').controller('MeetupsController',['$scope', '$stateP
 		//}
 
 		$scope.availableCircles = [];
-
+    
    		Circles.mine(function(acl) {
         	$scope.availableCircles = acl.allowed;
         	$scope.allDescendants = acl.descendants;
