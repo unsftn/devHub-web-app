@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean.article').controller('ArticleController', ['$scope', '$stateParams', '$location', 'Global', 'Article', 'MeanUser', 'Circles',
-  function($scope, $stateParams, $location, Global, Article, MeanUser) {
+angular.module('mean.article').controller('ArticleController', ['$scope', '$stateParams', '$location', 'Global', 'Article','Files', 'MeanUser', 'Circles',
+  function($scope, $stateParams, $location, Global, Article,Files, MeanUser) {
     $scope.global = Global;
     /*
     $scope.hasAuthorization = function(article) {
@@ -27,10 +27,46 @@ angular.module('mean.article').controller('ArticleController', ['$scope', '$stat
         $scope.descendants = [];
     };
     */
-    $scope.nesto = "nesto";
+    $scope.authorInputs = [];
+    $scope.addAuthorField=function(){
+      $scope.authorInputs.push({});
+      console.log("Usao u dodavanje polja");
+    }
+   $scope.removeAuthorField=function(index){
+     console.log("Usao u brisanje polja");
+    console.log("Brise polje sa indeksom " + index );
+    $scope.authorInputs.splice(index,1);
+    }
+    
+    $scope.title = "";
+    $scope.abstract = "";
+    $scope.name = "";
+    $scope.description = "";
+    $scope.link = "http://";
+    $scope.file = {};
+    
+    var tmpFileName = "";
+    var tmpFileNameToSave = "";
+    
+    $scope.fileNameChanged = function(ele) {
+       $scope.file = ele.files[0];
+       if(tmpFileNameToSave !== ""){
+         $scope.removeFiles(tmpFileNameToSave);
+       }else{
+        tmpFileNameToSave = $scope.file.name;
+        $scope.createFiles(tmpFileNameToSave);
+       }
+        console.log($scope.file);
+    }
     $scope.create = function(isValid) {
+      console.log("Usao u kreiranje clanka");
       if (isValid) {
         // $scope.article.permissions.push('test test');
+        console.log("Usao u kreiranje clanka nakon uspesne validacije");
+        console.log($scope.title);
+        console.log($scope.name);
+        console.log($scope.file);
+        
         var article = new Article($scope.article);
 
         article.$save(function(response) {
@@ -83,6 +119,7 @@ angular.module('mean.article').controller('ArticleController', ['$scope', '$stat
         $scope.articles = articles;
       });
     };
+   
 
     $scope.findOne = function() {
       Article.get({
@@ -91,5 +128,40 @@ angular.module('mean.article').controller('ArticleController', ['$scope', '$stat
         $scope.article = article;
       });
     };
+    
+    $scope.createFiles = function(tmpFileNameToSave) {
+      var filedh = new Files();
+      filedh.$save(function(response) {
+              console.log(response);
+            });
+    };
+    
+    $scope.removeFiles = function(tmpFileNameToSave) {
+      $scope.findFiles();
+      var filedh;
+      
+       for(var i = 0; i < $scope.filedhs.length; i++){
+         if($scope.filedhs[i].originalName === tmpFileNameToSave){
+            $scope.filedhs[i].$remove(function(response) {
+              for (var i in $scope.filedhs) {
+                if ($scope.filedhs[i] === filedh) {
+                  $scope.filedhs.splice(i, 1);
+                }
+              }
+            });
+            break;
+         }
+       }
+      
+      
+    };
+    
+   $scope.findFiles = function() {
+      console.log('Usao u find()');
+      Files.query(function(filedhs) {
+        $scope.filedhs = filedhs;
+      });
+    };
+    
   }
 ]);

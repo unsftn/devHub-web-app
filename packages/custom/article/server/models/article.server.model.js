@@ -19,13 +19,13 @@ var ArticleDHSchema = new Schema({
 	},
 	editors: {
 	    //type: [Schema.ObjectId],
-	    type: String,
-    	ref: 'User'
+	    type: String/*,
+    	ref: 'User'*/
 	},
 	reviewers: {
 	    //type: [Schema.ObjectId],
-	    type: String,
-    	ref: 'User'
+	    type: String/*,
+    	ref: 'User'*/
 	},
 	title: {
 		type: String,

@@ -65,6 +65,7 @@ module.exports = function(FileDHs) {
          * Delete an filedh
          */
         destroy: function(req, res) {
+            var fs = require('fs');
             var filedh = req.filedh;
 
 
@@ -76,6 +77,16 @@ module.exports = function(FileDHs) {
                 }
 
                 res.json(filedh);
+                
+                fs.unlink(filedh.path, function() {
+                    /*
+                  res.send ({
+                    status: "200",
+                    responseType: "string",
+                    response: "success"
+                  });   
+                  */  
+                });
             });
         },
         /**
@@ -105,7 +116,7 @@ module.exports = function(FileDHs) {
             var file = req.files.file,
                 fs = require('fs'),
                 path = './uploads/';
-        
+            console.log(file);
             // Logic for handling missing file, wrong mimetype, no buffer, etc.
             var buffer = file.buffer, //Note: buffer only populates if you set inMemory: true.
                 fileName = file.name;
@@ -154,4 +165,5 @@ module.exports = function(FileDHs) {
             console.log('Stream ended.');
         }
     };
+    
 }
