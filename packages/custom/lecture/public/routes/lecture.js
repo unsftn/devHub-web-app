@@ -20,6 +20,10 @@ angular.module('mean.lecture').config(['$stateProvider',
 			.state('lecture by id',{
 				url: '/lectures/:lectureId',
 				templateUrl: 'lecture/views/view.html'
+			})
+			.state('approve lecture',{
+				url: '/approve/lectures',
+				templeteUrl: 'lecture/views/approve.html'
 			});
 
 	}

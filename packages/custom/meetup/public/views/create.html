@@ -27,7 +27,7 @@
       <fieldset data-role="controlgroup">
         <legend>Select lectures for this meetup</legend>
           <label ng-repeat="lecture in lectures">
-           <input type="checkbox" name="{{lecture.name}}" id="{{lecture.name}}"  checklist-model="meetup.lectures" checklist-value="lecture.name" ng-model="lecture.selected">
+           <input type="checkbox" name="{{lecture.name}}" id="{{lecture.name}}"  checklist-model="meetup.lectures" checklist-value="{{lectures.name}}" ng-model="lecture.selected">
            <label for="{{lecture.name}}">{{lecture.name}}</label>
           </label>
       </fieldset>

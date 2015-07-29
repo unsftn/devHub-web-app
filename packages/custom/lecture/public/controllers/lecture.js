@@ -100,5 +100,17 @@ angular.module('mean.lecture').controller('LecturesController',['$scope', '$stat
 
     	};
 
+        $scope.updateStatus = function(lecture){
+            var lec = $scope.lecture;
+            
+            if(lecture.accepted){
+                lec.accepted = true;
+                console.log("Status : "+ lec.accepted);
+            }else{
+                lec.accepted = false;
+                console.log("Status : "+ lec.accepted);
+            }
+        }
+
 	}
 ]);
