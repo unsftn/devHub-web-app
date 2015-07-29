@@ -106,6 +106,10 @@ angular.module('mean.meetup').controller('MeetupsController',['$scope', '$stateP
             if(!$scope.meetup.lectures){
                 $scope.meetup.lectures=[];
             }
+            else{
+                // maybe the same ^^^^^
+                $scope.meetup.lectures=[];
+            }
             var meetup = $scope.meetup;
             console.log("OVDEEE SAAAAAM ");
            console.log(JSON.stringify(meetup));
@@ -133,6 +137,34 @@ angular.module('mean.meetup').controller('MeetupsController',['$scope', '$stateP
                 $scope.lectures = approvedLectures;
             });
 
+        };
+
+
+        $scope.updatedLectures = function(meetup, lectures){
+            if(!$scope.meetup.lectures){
+                $scope.meetup.lectures=[];
+            }
+            else{
+                // maybe the same ^^^^^
+                $scope.meetup.lectures=[];
+            }
+
+           console.log(JSON.stringify(meetup));
+           console.log("Duzina niza lectures je "+lectures.length);
+
+           for(var i=0; i<lectures.length; i++){
+                 console.log("1.Usao u petlju "+lectures[i].name);
+               // if(lectures[i].SELECTED=='Y'){
+                 //   meetup.lectures.push(lectures[i].name);
+                   // console.log(lectures[i].name);
+                 //}
+                if(lectures[i].selected == true){
+
+                   meetup.lectures.push(lectures[i].name);
+                    console.log(lectures[i].name); 
+                }
+
+           }
         };
 
 	}

@@ -20,10 +20,21 @@
         <input name="date" data-ng-model="meetup.date" id="date" placeholder="Date" class="form-control" required></input>
       </div>
 
+
+       <div  data-ng-init = "allLectures()">
+        <fieldset data-role="controlgroup">
+          <legend>Select lectures for this meetup</legend>
+            <label ng-repeat="lecture in lectures">
+             <input type="checkbox" name="{{lecture.name}}" id="{{lecture.name}}"  checklist-model="meetup.lectures" checklist-value="{{lectures.name}}" ng-model="lecture.selected">
+             <label for="{{lecture.name}}">{{lecture.name}}</label>
+            </label>
+        </fieldset>
+       </div>
+
    
     <div class="form-group">
       <div class="col-md-offset-2 col-md-10">
-        <button mean-token="'edit-submit'" type="submit" class="btn btn-default">Submit</button>
+        <button mean-token="'edit-submit'" type="submit" class="btn btn-default" ng-click="updatedLectures(meetup, lectures)">Submit</button>
       </div>
     </div>
   </form>
