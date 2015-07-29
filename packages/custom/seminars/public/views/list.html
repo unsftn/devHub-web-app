@@ -6,6 +6,7 @@
 			<th>Datum kraja</th>
 			<th>Radionice</th>
 			<th>Učesnici</th>
+			<th>Lokacija</th>
 			<th>Izbriši</th>
 			<th>Izmeni</th>
 			</tr>
@@ -19,7 +20,12 @@
 						</option> 
 					 </select>
 				</td>
-				<td> </td>
+				<td> 
+
+				</td>
+				<td>
+					{{ seminar.location }}
+				</td>
 				<td>
 					<a class="btn" data-ng-click="remove(seminar);">
 						<i class="glyphicon glyphicon-trash"></i>

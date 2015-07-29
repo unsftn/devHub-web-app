@@ -20,7 +20,7 @@
 		<div class="form-group" ng-class="{ 'has-error' : submitted && workshopForm.startDate.$invalid }">		
 	    <div class="col-md-6">
             <p class="input-group">
-              <input type="text" name="startDate" class="form-control" datepicker-popup={{format}} data-ng-model="workshop.startDate" is-open="opened" min-date="minDate"  datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="dd.mm.yyyy."/>
+              <input type="text" name="startDate" class="form-control" datepicker-popup={{format}} data-ng-model="workshop.startDate" is-open="opened" min-date="minDate"  datepicker-options="dateOptions" ng-required="true" close-text="Close" disabled="disabled"/>
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -33,7 +33,7 @@
 
 		<div class="form-group" ng-class="{ 'has-error' : submitted && workshopForm.endDate.$invalid }">
             <p class="input-group">
-              <input type="text" name="endDate" class="form-control" datepicker-popup="{{format}}" data-ng-model="workshop.endDate" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="dd.mm.yyyy."/>
+              <input type="text" name="endDate" class="form-control" datepicker-popup="{{format}}" data-ng-model="workshop.endDate" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" disabled="disabled" />
             </p>
 
             <div ng-show="submitted && workshopForm.endDate.$invalid" class="help-block">

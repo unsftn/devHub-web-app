@@ -1,5 +1,5 @@
 <section data-ng-controller="WorkshopsController" data-ng-init="findOne()">
-	<form name="workshopForm" class="form-horizontal col-md-6" data-ng-submit="update(workshopForm.$valid)" novalidate>
+	<form name="workshopForm" class="form-horizontal col-md-6" data-ng-submit="create(workshopForm.$valid)" novalidate>
 		<div class="form-group" ng-class="{ 'has-error' : submitted && workshopForm.title.$invalid }">
 			<label> Naziv </label>
 			<input name="title" type="text" class="form-control" data-ng-model="workshop.title" required>
@@ -7,29 +7,64 @@
         	<p ng-show="workshopForm.title.$error.required">Morate uneti naziv radionice!</p>
        		</div>
 		</div>
-		<div class="form-group" ng-class="{ 'has-error' : submitted && workshopForm.startDate.$invalid }">
-			<label>Datum pocetka </label>
-			<input name="startDate" type="text" class="form-control" data-ng-model="workshop.startDate" placeholder="dd.mm.yyyy."  required>
+
+		<div>
+			<label>Datum početka</label> 
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<label>Datum kraja</label>
+		</div>
+			
+		<div class="form-group" ng-class="{ 'has-error' : submitted && workshopForm.startDate.$invalid }">		
+	    <div class="col-md-6">
+            <p class="input-group">
+              <input type="text" name="startDate" class="form-control" datepicker-popup={{format}} data-ng-model="workshop.startDate" is-open="opened" min-date="minDate"  datepicker-options="dateOptions" ng-required="true" close-text="Close" disabled="disabled"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        
 			<div ng-show="submitted && workshopForm.startDate.$invalid" class="help-block">
         	<p ng-show="workshopForm.startDate.$error.required">Morate uneti datum početka radionice!</p>
        		</div>
 		</div>
+
 		<div class="form-group" ng-class="{ 'has-error' : submitted && workshopForm.endDate.$invalid }">
-			<label>Datum kraja </label>
-			<input name="endDate" type="text" class="form-control" data-ng-model="workshop.endDate" placeholder="dd.mm.yyyy." required>
-			<div ng-show="submitted && workshopForm.endDate.$invalid" class="help-block">
-        	<p ng-show="workshopForm.endDate.$error.required">Morate uneti datum početka radionice!</p>
+            <p class="input-group">
+              <input type="text" name="endDate" class="form-control" datepicker-popup="{{format}}" data-ng-model="workshop.endDate" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" disabled="disabled" />
+            </p>
+
+            <div ng-show="submitted && workshopForm.endDate.$invalid" class="help-block">
+        	<p ng-show="workshopForm.endDate.$error.required">Morate uneti datum kraja radionice!</p>
        		</div>
 		</div>
-		<div>
-			<label> Tehnologije </label>
-			<input type="text" class="form-control" name="tehnology" data-ng-model="workshop.technology">
 		</div>
+
+
+		<div>
+		<label> Tehnologije </label>
+		<!--<form name="tech" data-ng-submit="addTech()">
+        	<input type="text" class="form-control" name="tehnology" data-ng-model="workshop.technology">
+        	<input type="submit" name="tech">
+		</form>
+		</div>
+
+		<select multiple>
+			<option data-ng-repeat="t in technology">
+				{{ t }}
+			</option>
+		</select>-->
+			<textarea class="form-control" name="tehnology" data-ng-model="workshop.technology"></textarea>
+		</div>
+
 		<div>
 			<label> Mentori </label>
-			<input type="text" class="form-control" name="tehnology" data-ng-model="workshop.mentors">
+			<textarea class="form-control" name="tehnology" data-ng-model="workshop.mentors"></textarea>
 		</div>
-	<button mean-token="'create-submit'" type="submit" class="">Izmeni</button>
 
-</form>
+		<button mean-token="'create-submit'" type="submit" class="">Kreiraj</button>
+
+	</form>
 </section> 

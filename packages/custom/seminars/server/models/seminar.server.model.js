@@ -40,6 +40,10 @@ var SeminarSchema = new Schema({
 
   workshops: {
     type: [String]
+  },
+
+  location: {
+    type: String
   }
  
 });
