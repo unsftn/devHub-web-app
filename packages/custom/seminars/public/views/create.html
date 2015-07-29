@@ -1,0 +1,76 @@
+<section data-ng-controller="SeminarsController" data-ng-init="workshops()">
+	<form name="seminarForm" class="form-horizontal col-md-6" data-ng-submit="create(seminarForm.$valid)" novalidate>
+
+		<div class="form-group" ng-class="{ 'has-error' : submitted && seminarForm.title.$invalid }">
+			<label> Naziv </label>
+			<input name="title" type="text" class="form-control" data-ng-model="seminar.title" required>
+			<div ng-show="submitted && seminarForm.title.$invalid" class="help-block">
+        	<p ng-show="seminarForm.title.$error.required">Morate uneti naziv seminara!</p>
+       		</div>
+		</div>
+		
+		<div>
+			<label>Datum početka</label> 
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label>Datum kraja</label>
+		</div>
+			
+		<div class="form-group" ng-class="{ 'has-error' : submitted && seminarForm.startDate.$invalid }">		
+	    <div class="col-md-6">
+            <p class="input-group">
+              <input type="text" name="startDate" class="form-control" datepicker-popup={{format}} data-ng-model="seminar.startDate" is-open="opened" min-date="minDate"  datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="dd.mm.yyyy."/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        
+			<div ng-show="submitted && seminarForm.startDate.$invalid" class="help-block">
+        	<p ng-show="seminarForm.startDate.$error.required">Morate uneti datum početka seminara!</p>
+       		</div>
+		</div>
+
+		<div class="form-group" ng-class="{ 'has-error' : submitted && seminarForm.endDate.$invalid }">
+            <p class="input-group">
+              <input type="text" name="endDate" class="form-control" datepicker-popup="{{format}}" data-ng-model="seminar.endDate" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="dd.mm.yyyy."/>
+            </p>
+
+            <div ng-show="submitted && seminarForm.endDate.$invalid" class="help-block">
+        	<p ng-show="seminarForm.endDate.$error.required">Morate uneti datum kraja seminara!</p>
+       		</div>
+		</div>
+		</div>
+
+		<div>
+			<label> Kandidati </label>
+			<select class="form-control"  multiple >
+				<option >  </option> 
+			</select>
+			<a class="btn" href="/seminars/{{seminar._id}}/apply">
+          		<i class="glyphicon glyphicon-plus"></i>
+        	</a> Dodaj kandidata 
+		</div>
+
+		<div>
+			<label> Učesnici </label>
+			<select class="form-control"  multiple >
+				<option > </option> 
+			</select>
+		</div>
+
+		<div>
+			<label>Radionice</label>
+			<select class="form-control" data-ng-model="seminar.workshops" multiple >
+				<option data-ng-repeat="workshop in workshops" > 
+					{{ workshop.title }} 
+				</option> 
+			</select>
+		</div>		
+	
+	<button mean-token="'create-submit'" type="submit" class="">Kreiraj</button>
+
+
+	</form>
+</section>

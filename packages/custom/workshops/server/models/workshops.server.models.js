@@ -4,15 +4,32 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var WorkshopSchema = new Schema({
-	created: {
-		type: Date,
-		default: Date.now
-	},
 	title: {
-		type: String,
-		//required: 'Morate uneti naziv radionice',
-		trim: true
-	}
+    type: String,
+    required: true,
+    unique: true,
+    trim: true
+  },
+  
+  startDate: {
+    type: Date,
+    required: true,
+   
+  },
+
+  endDate: {
+    type: Date,
+    required: true
+
+  },
+
+  technology: {
+    type: [String]
+  },
+
+  mentors: {
+    type: [String]
+  }
 });
 
 WorkshopSchema.statics.load = function(id,cb) {

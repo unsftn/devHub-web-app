@@ -1,9 +1,11 @@
 'use strict';
 
-angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$stateParams', '$location', 'Global', 'Seminars',
-		function($scope, $stateParams, $location, Global, Seminars) {
+angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$stateParams', '$location', 'Global', 'Seminars','Workshops',
+		function($scope, $stateParams, $location, Global, Seminars, Workshops) {
 			
 			$scope.global = Global;
+
+      $scope.today=new Date();
 
 			 $scope.create = function(isValid) {
     			  if (isValid) {
@@ -11,7 +13,8 @@ angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$st
      			  var seminar = new Seminars($scope.seminar);
 
       			  seminar.$save(function(response) {
-       			      $location.path('seminars/' + response._id);
+       			    //  $location.path('seminars/' + response._id);
+                $location.path('seminars');
       			  }, function() {$location.path('login');});
 
       			  $scope.seminar = {};
@@ -22,7 +25,7 @@ angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$st
     		};
 		
 
-			$scope.remove = function(){
+			$scope.remove = function(seminar){
 				if (seminar) {
        				 seminar.$remove(function(response) {
        				   for (var i in $scope.seminars) {
@@ -48,7 +51,7 @@ angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$st
       			  	seminar.updated.push(new Date().getTime());
 
        				seminar.$update(function() {
-       				   $location.path('seminars/' + seminar._id);
+       				   $location.path('seminars');
       				});
      			  } else {
      				   $scope.submitted = true;
@@ -56,10 +59,7 @@ angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$st
 			};
 
 			$scope.find = function() {
-				 $scope.nesto="pre";
      			 Seminars.query(function(seminars) {
-     			 console.log("!!!!! "+JSON.stringify(seminars));
-     			 $scope.nesto1="posle";
       			  $scope.seminars = seminars;
      			 });
   			};
@@ -71,6 +71,48 @@ angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$st
 					$scope.seminar = seminar;
 				});
 			};
-	}
+
+      $scope.workshops = function() {
+          Workshops.query(function(workshops){
+            $scope.workshops = workshops;
+          });
+      };  
+	   
+
+    ///podesavanje datuma
+      $scope.today = function() {
+          $scope.dt = new Date();
+      };
+      $scope.today();
+
+      $scope.toggleMin = function() {
+          $scope.minDate = $scope.minDate ? null : new Date();
+      };
+      $scope.toggleMin();
+
+      $scope.open = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope.opened = true;
+      };
+
+      $scope.dateOptions = {
+        formatYear: 'yy',
+        startingDay: 1
+      };
+ 
+      $scope.format = 'dd.MM.yyyy';
+
+      $scope.isEmpty = function(workshops){
+        if (workshops.length != 0) 
+          return true;
+        return false;
+
+        }
+
+     
+
+      }
 
 ]);
