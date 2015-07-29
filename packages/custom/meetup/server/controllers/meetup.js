@@ -54,7 +54,7 @@ module.exports = function(Meetups){
                     });
                 }
 
-                Recipes.events.publish('update', {
+                Meetups.events.publish('update', {
                    // description: req.user.name + ' updated ' + req.body.title + ' recipe.'
                 });
 

@@ -75,7 +75,7 @@ angular.module('mean.meetup').controller('MeetupsController',['$scope', '$stateP
  				meetup.updated.push(new Date().getTime());
 
  				meetup.$update(function(){
- 					$location.path('meetup/'+meetup._id);
+ 					$location.path('meetups/'+meetup._id);
  				});
 
  			}
@@ -129,7 +129,8 @@ angular.module('mean.meetup').controller('MeetupsController',['$scope', '$stateP
 
         $scope.allLectures = function(){
             Lectures.query(function(lectures){
-                $scope.lectures = lectures;
+                var approvedLectures = $.grep(lectures, function(e){ return e.accepted == true; });
+                $scope.lectures = approvedLectures;
             });
 
         };
