@@ -20,10 +20,14 @@
         <input name="link" data-ng-model="lecture.link" id="link" placeholder="Link" class="form-control" required></input>
       </div>
   
+      <div>
+      <input type="checkbox" name="status" id="status" checklist-value="lecture.accepted" ng-model="lecture.accepted">
+      <label for="{{lecture.accepted}}">Accepted</label>
+      </div>
    
     <div class="form-group">
       <div class="col-md-offset-2 col-md-10">
-        <button mean-token="'edit-submit'" type="submit" class="btn btn-default">Submit</button>
+        <button mean-token="'edit-submit'" type="submit" class="btn btn-default" ng-click="updateStatus(lecture)">Submit</button>
       </div>
     </div>
   </form>

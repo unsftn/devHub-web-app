@@ -8,7 +8,7 @@ angular.module('mean.lecture').controller('LecturesController',['$scope', '$stat
 		//$scope.hasAuthorization = funtion(article){
 		//	if(!recipe || !recipe.user)
 		//}
-
+        $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 		$scope.availableCircles = [];
 
    		Circles.mine(function(acl) {
@@ -99,6 +99,18 @@ angular.module('mean.lecture').controller('LecturesController',['$scope', '$stat
     		});
 
     	};
+
+        $scope.updateStatus = function(lecture){
+            var lec = $scope.lecture;
+            
+            if(lecture.accepted){
+                lec.accepted = true;
+                console.log("Status : "+ lec.accepted);
+            }else{
+                lec.accepted = false;
+                console.log("Status : "+ lec.accepted);
+            }
+        }
 
 	}
 ]);

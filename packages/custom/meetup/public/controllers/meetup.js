@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('mean.meetup').controller('MeetupsController',['$scope', '$stateParams', '$location', 'Global', 'Meetups', 'MeanUser', 'Circles',
+angular.module('mean.meetup').controller('MeetupsController',['$scope', '$stateParams', '$location', 'Global', 'Meetups', 'Lectures','MeanUser', 'Circles',
 
-	function($scope, $stateParams, $location, Global, Meetups, MeanUser, Circles){
+	function($scope, $stateParams, $location, Global, Meetups,Lectures, MeanUser, Circles){
 		$scope.global = Global;
 
 		//$scope.hasAuthorization = funtion(article){
@@ -10,7 +10,7 @@ angular.module('mean.meetup').controller('MeetupsController',['$scope', '$stateP
 		//}
 
 		$scope.availableCircles = [];
-
+    
    		Circles.mine(function(acl) {
         	$scope.availableCircles = acl.allowed;
         	$scope.allDescendants = acl.descendants;
@@ -75,7 +75,7 @@ angular.module('mean.meetup').controller('MeetupsController',['$scope', '$stateP
  				meetup.updated.push(new Date().getTime());
 
  				meetup.$update(function(){
- 					$location.path('meetup/'+meetup._id);
+ 					$location.path('meetups/'+meetup._id);
  				});
 
  			}
@@ -99,6 +99,73 @@ angular.module('mean.meetup').controller('MeetupsController',['$scope', '$stateP
     		});
 
     	};
+
+
+
+        $scope.checkSelectedLectures = function(lectures){
+            if(!$scope.meetup.lectures){
+                $scope.meetup.lectures=[];
+            }
+            else{
+                // maybe the same ^^^^^
+                $scope.meetup.lectures=[];
+            }
+            var meetup = $scope.meetup;
+            console.log("OVDEEE SAAAAAM ");
+           console.log(JSON.stringify(meetup));
+           console.log("Duzina niza lectures je "+lectures.length);
+
+           for(var i=0; i<lectures.length; i++){
+                 console.log("1.Usao u petlju "+lectures[i].name);
+               // if(lectures[i].SELECTED=='Y'){
+                 //   meetup.lectures.push(lectures[i].name);
+                   // console.log(lectures[i].name);
+                 //}
+                if(lectures[i].selected == true){
+                   meetup.lectures.push(lectures[i].name);
+                    console.log(lectures[i].name); 
+                }
+
+           }
+
+        };
+
+
+        $scope.allLectures = function(){
+            Lectures.query(function(lectures){
+                var approvedLectures = $.grep(lectures, function(e){ return e.accepted == true; });
+                $scope.lectures = approvedLectures;
+            });
+
+        };
+
+
+        $scope.updatedLectures = function(meetup, lectures){
+            if(!$scope.meetup.lectures){
+                $scope.meetup.lectures=[];
+            }
+            else{
+                // maybe the same ^^^^^
+                $scope.meetup.lectures=[];
+            }
+
+           console.log(JSON.stringify(meetup));
+           console.log("Duzina niza lectures je "+lectures.length);
+
+           for(var i=0; i<lectures.length; i++){
+                 console.log("1.Usao u petlju "+lectures[i].name);
+               // if(lectures[i].SELECTED=='Y'){
+                 //   meetup.lectures.push(lectures[i].name);
+                   // console.log(lectures[i].name);
+                 //}
+                if(lectures[i].selected == true){
+
+                   meetup.lectures.push(lectures[i].name);
+                    console.log(lectures[i].name); 
+                }
+
+           }
+        };
 
 	}
 ]);
