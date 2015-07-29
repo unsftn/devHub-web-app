@@ -1,28 +1,88 @@
 <section data-ng-controller="PraksaController" data-ng-init="findOne()">
 	<h1>Izmena prakse!!!</h1>
+	<table>
+	<tr class="row">
+	<td class="col-md-6">
 	<form name="praksaForm" data-ng-submit="update(true)">
 	<table border="3">
-		<tr>
-			<td>Naziv:</td>
-			<td>{{praksa.naziv}}</td>
+		<tr class="row">
+			<td class="col-md-6">Naziv:</td>
+			<td class="col-md-6">{{praksa.naziv}}</td>
 		</tr>
-		<tr>
-			<td>Lokacija:</td>
-			<td><input type="text" data-ng-model="praksa.lokacija"></td>
+		<tr class="row">
+			<td class="col-md-6">Lokacija:</td>
+			<td class="col-md-6"><input type="text" class="form-control" data-ng-model="praksa.lokacija"></td>
 		</tr>
-		<tr>
-			<td>Projekti:</td>
-			<td>
-				<select multiple data-ng-init="allProjects()" data-ng-model="praksa.projekti">
+		<tr class="row">
+			<td class="col-md-6">Projekti:</td>
+			<td class="col-md-6">
+				<select multiple class="form-control" data-ng-init="allProjects()" data-ng-model="praksa.projekti">
 					<option data-ng-repeat="projekat in projekti" value="{{projekat.naziv}}" ng-selected="selekcija(praksa,projekat.naziv)">{{projekat.naziv}}</option>
 				</select>
 			</td>
 		</tr>
-		<tr>
-			<td colspan="2" align="center">
-				<input type="submit" value="Izmeni">
+		<tr class="row">
+			<td class="col-md-6">Mentori:</td>
+			<td class="col-md-6">
+				<select multiple class="form-control" data-ng-model="praksa.mentori">
+					<option data-ng-repeat="mentor in mentori" value="{{mentor}}" ng-selected="selected">{{mentor}}</option>
+				</select>
+			</td>
+		</tr>
+		<tr class="row">
+			<td class="col-md-6">Ucesnici:</td>
+			<td class="col-md-6">
+				<select multiple class="form-control" data-ng-model="praksa.ucesnici">
+					<option data-ng-repeat="ucesnik in ucesnici" value="{{ucesnik}}" ng-selected="selected">{{ucesnik}}</option>
+				</select>
+			</td>
+		</tr>
+		<tr class="row">
+			<td class="col-md-6">Kandidati:</td>
+			<td class="col-md-6">
+				<select multiple class="form-control" data-ng-model="praksa.kandidati">
+					<option data-ng-repeat="kandidat in kandidati" value="{{kandidat}}" ng-selected="selected">{{kandidat}}</option>
+				</select>
+			</td>
+		</tr>
+		<tr class="row">
+			<td class="col-md-6" colspan="2" align="center">
+				<input type="submit" class="btn btn-primary" value="Izmeni">
 			</td>
 		</tr>
 	</table>
 	</form>
+	</td>
+	<td>
+	<form name="dodajMenUceKanForm" data-ng-submit="dodajMenUceKan(true)">
+	<table border="3">
+		<tr class="row">
+			<th class="col-md-6" colspan="2">Dodavanje mentora/ucesnika/kandidata</th>
+		</tr>
+		<tr class="row">
+			<td class="col-md-6">Ime:</td>
+			<td class="col-md-6"><input class="form-control" type="text" data-ng-model="osoba.ime"></td>
+		</tr>
+		<tr class="row">
+			<td class="col-md-6">Prezime:</td>
+			<td class="col-md-6"><input class="form-control" type="text" data-ng-model="osoba.prezime"></td>
+		</tr>
+		<tr class="row">
+			<td class="col-md-6">Uloga:</td>
+			<td class="col-md-6">
+				<select class="form-control" data-ng-init="sveUloge()" data-ng-model="osoba.uloga">
+					<option data-ng-repeat="uloga in uloge" value="{{uloga.naziv}}" ng-selected="true">{{uloga.naziv}}</option>
+				</select>
+			</td>
+		</tr>
+		<tr class="row">
+			<td class="col-md-6" colspan="2" align="center">
+				<input type="submit" class="btn btn-primary" value="Dodaj">
+			</td>
+		</tr>
+	</table>
+	</form>
+	</td>
+	</tr>
+	</table>
 </section>

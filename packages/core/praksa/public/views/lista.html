@@ -2,22 +2,46 @@
 	<h1>LISTA PRAKSI!!!</h1>
 	<section data-ng-controller="PraksaController" data-ng-init="find()">
 		<table border="2" align="center">
-			<tr>
-				<th>Naziv</th>
-				<th>Lokacija</th>
-				<th>Projekti</th>
-				<th>Brisi/Izmeni</th>
+			<tr class="row">
+				<th class="col-md-6">Naziv</th>
+				<th class="col-md-6">Datum pocetka</th>
+				<th class="col-md-6">Datum kraja</th>
+				<th class="col-md-6">Tehnologije</th>
+				<th class="col-md-6">Projekti</th>
+				<th class="col-md-6">Mentori</th>
+				<th class="col-md-6">Ucesnici</th>
+				<th class="col-md-6">Kandidati</th>
+				<th class="col-md-6">Lokacija</th>
+				<th class="col-md-6">Brisi/Izmeni</th>
 			</tr>
-			<tr data-ng-repeat="praksa in prakse">
-				<td>{{praksa.naziv}}</td>
-				<td>{{praksa.lokacija}}</td>
-				<td>
+			<tr class="row" data-ng-repeat="praksa in prakse">
+				<td class="col-md-6">{{praksa.naziv}}</td>
+				<td class="col-md-6">{{praksa.datumPocetka}}</td>
+				<td class="col-md-6">{{praksa.datumKraja}}</td>
+				<td class="col-md-6">{{praksa.tehnologije}}</td>
+				<td class="col-md-6">
 					<select multiple>
 					<option data-ng-repeat="projekat in praksa.projekti">{{projekat}}</option>
 					</select>
 				</td>
-				<td>
-					<input type="button" value="Brisi" data-ng-click="remove(praksa)"/>
+				<td class="col-md-6">
+					<select multiple>
+					<option data-ng-repeat="mentor in praksa.mentori">{{mentor}}</option>
+					</select>
+				</td>
+				<td class="col-md-6">
+					<select multiple>
+					<option data-ng-repeat="ucesnik in praksa.ucesnici">{{ucesnik}}</option>
+					</select>
+				</td>
+				<td class="col-md-6">
+					<select multiple>
+					<option data-ng-repeat="kandidat in praksa.kandidati">{{kandidat}}</option>
+					</select>
+				</td>
+				<td class="col-md-6">{{praksa.lokacija}}</td>
+				<td class="col-md-6">
+					<input type="button" class="btn btn-info" value="Brisi" data-ng-click="remove(praksa)"/>
 					&nbsp;&nbsp;
 					<a href="/praksa/izmeni/{{praksa._id}}">Izmeni</a>
 				</td>

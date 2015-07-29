@@ -41,11 +41,26 @@ var PraksaSchema = new Schema({
   //ODRADTI SLEDECE ATRIBUTE KOJI TREBA DA BUDU LISTE -->OSOBA<--
   
   //-----MENTORI
+  mentori: {
+    type: [String],
+    trim: true,
+    default: ""
+  },
   
   //-----UCESNICI
+  ucesnici: {
+    type: [String],
+    trim: true,
+    default: ""
+  },
 
   //-----KANDIDATI
-  
+  kandidati: {
+    type: [String],
+    trim: true,
+    default: ""
+  },
+
   //////////////////////////////////////
   lokacija: {
     type: String,

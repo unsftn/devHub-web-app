@@ -14,7 +14,6 @@ angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$lo
       alert($scope.mentori);
       if (isValid) {
         // $scope.projekat.permissions.push('test test');
-        alert($scope.projekat);
         var projekat = new Projekti($scope.projekat);
 
         projekat.$save(function(response) {
@@ -78,6 +77,8 @@ angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$lo
         projekatId: $stateParams.projekatId
       }, function(projekat) {
         $scope.projekat = projekat;
+        $scope.mentori = projekat.mentori;
+        $scope.ucesnici = projekat.ucesnici;
       });
     };
 
@@ -109,11 +110,14 @@ angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$lo
         } else if ($scope.osoba.uloga=="ucesnik") {
           $scope.ucesnici.push($scope.osoba.ime+" "+$scope.osoba.prezime);
         }
+        $scope.selected = "true";
       } else {
         $scope.submitted = true;
       }
 
     };
+
+    $scope.selected = "true";
 
   }
 ]);

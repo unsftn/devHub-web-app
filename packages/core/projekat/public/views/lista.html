@@ -2,32 +2,40 @@
 	<h1>LISTA PROJEKATA!!!</h1>
 	<section data-ng-controller="ProjekatController" data-ng-init="find()">
 		<table border="2" align="center">
-			<tr>
-				<th>Naziv</th>
-				<th>Opis</th>
-				<th>Sadrzaj</th>
-				<th>Mentori</th>
-				<th>Ucesnici</th>
-				<th>Datum pocetka</th>
-				<th>Datum kraja</th>
-				<th>Link repozitorijuma</th>
-				<th>Komentari</th>
-				<th>Status</th>
-				<th>Brisi/Izmeni</th>
+			<tr class="row">
+				<th class="col-md-6">Naziv</th>
+				<th class="col-md-6">Opis</th>
+				<th class="col-md-6">Sadrzaj</th>
+				<th class="col-md-6">Mentori</th>
+				<th class="col-md-6">Ucesnici</th>
+				<th class="col-md-6">Datum pocetka</th>
+				<th class="col-md-6">Datum kraja</th>
+				<th class="col-md-6">Link repozitorijuma</th>
+				<th class="col-md-6">Komentari</th>
+				<th class="col-md-6">Status</th>
+				<th class="col-md-6">Brisi/Izmeni</th>
 			</tr>
-			<tr data-ng-repeat="projekat in projekti">
-				<td>{{projekat.naziv}}</td>
-				<td>{{projekat.opis}}</td>
-				<td>{{projekat.sadrzaj}}</td>
-				<td>{{projekat.mentori}}</td>
-				<td>{{projekat.ucesnici}}</td>
-				<td>{{projekat.datumPocetka}}</td>
-				<td>{{projekat.datumKraja}}</td>
-				<td>{{projekat.linkRepozitorijuma}}</td>
-				<td>{{projekat.komentari}}</td>
-				<td>{{projekat.status}}</td>
-				<td>
-					<input type="button" value="Brisi" data-ng-click="remove(projekat)"/>
+			<tr class="row" data-ng-repeat="projekat in projekti">
+				<td class="col-md-6">{{projekat.naziv}}</td>
+				<td class="col-md-6">{{projekat.opis}}</td>
+				<td class="col-md-6">{{projekat.sadrzaj}}</td>
+				<td class="col-md-6">
+					<select multiple>
+						<option data-ng-repeat="mentor in projekat.mentori" value="{{mentor}}" !selected>{{mentor}}</option>
+					</select>
+				</td>
+				<td class="col-md-6">
+					<select multiple>
+						<option data-ng-repeat="ucesnik in projekat.ucesnici" value="{{ucesnik}}" !selected>{{ucesnik}}</option>
+					</select>
+				</td>
+				<td class="col-md-6">{{projekat.datumPocetka}}</td>
+				<td class="col-md-6">{{projekat.datumKraja}}</td>
+				<td class="col-md-6">{{projekat.linkRepozitorijuma}}</td>
+				<td class="col-md-6">{{projekat.komentari}}</td>
+				<td class="col-md-6">{{projekat.status}}</td>
+				<td class="col-md-6">
+					<input type="button" class="btn btn-info" value="Brisi" data-ng-click="remove(projekat)"/>
 					&nbsp;&nbsp;
 					<a href="/projekat/izmeni/{{projekat._id}}">Izmeni</a>
 				</td>
