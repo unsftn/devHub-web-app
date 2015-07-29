@@ -1,3 +1,15 @@
+<!--<html>
+<head>
+<script src='../../../../../bower_components/lodash[.min].js'></script>
+<script src='../../../../../bower_components/angular-google-maps/dist/angular-google-maps[.min].js'></script>
+<script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+</head>
+<body>
+  <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+
+</body>
+
+</html>-->
 <section data-ng-controller="LecturesController" data-ng-init="findOne()">
   <h2>{{lecture.name}}</h2>
     <a class="btn" href="/lectures/{{lecture._id}}/edit">
