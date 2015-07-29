@@ -10,14 +10,29 @@
 			<th>Izmeni</th>
 			</tr>
 			<tr data-ng-repeat="workshop in workshops">
-				<td> {{ workshop.title }} </td>
-				<td> {{ workshop.startDate | date:'dd-MM-yyyy'}} </td>
-				<td> {{ workshop.endDate | date:'dd-MM-yyyy'}}</td>
-				<td> <select multiple>
-					<option >
-					</option> 
+				<td> 
+					{{ workshop.title }} 
 				</td>
-				<td></td>
+				<td> 
+					{{ workshop.startDate | date:'dd-MM-yyyy'}} 
+				</td>
+				<td> 
+				  	 {{ workshop.endDate | date:'dd-MM-yyyy'}}
+				</td>
+				<td> 
+					<p ng-show="isEmpty(workshop.technology)" data-ng-repeat="tech in workshop.technology"> 
+						<select class="form-control" multiple>
+							<option data-ng-repeat="t in splity(tech)" >{{ t }}</option> 
+						</select>
+					</p>
+				</td>
+				<td>
+					<p ng-show="isEmpty(workshop.mentors)" data-ng-repeat="ment in workshop.mentors">	
+					 <select class="form-control" multiple>
+							<option data-ng-repeat="m in splity(ment)" >{{ m }}</option>
+						</select>
+					</p>
+				</td>
 				<td>
 					<a class="btn" data-ng-click="remove(workshop);">
 						<i class="glyphicon glyphicon-trash"></i>

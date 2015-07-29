@@ -13,9 +13,11 @@
 				<td> {{ seminar.title }} </td>
 				<td> {{ seminar.startDate | date:'dd-MM-yyyy'}} </td>
 				<td> {{ seminar.endDate | date:'dd-MM-yyyy'}}</td>
-				<td> <select multiple>
-					<option data-ng-repeat="s in seminar.workshops" > {{ s }} </option> 
-				</select>
+				<td> <select class="form-control" ng-show="isEmpty(seminar.workshops)" multiple>
+						<option data-ng-repeat="s in seminar.workshops" > 
+							{{ s }} 
+						</option> 
+					 </select>
 				</td>
 				<td> </td>
 				<td>

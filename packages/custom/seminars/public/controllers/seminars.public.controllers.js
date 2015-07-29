@@ -77,6 +77,42 @@ angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$st
             $scope.workshops = workshops;
           });
       };  
-	}
+	   
+
+    ///podesavanje datuma
+      $scope.today = function() {
+          $scope.dt = new Date();
+      };
+      $scope.today();
+
+      $scope.toggleMin = function() {
+          $scope.minDate = $scope.minDate ? null : new Date();
+      };
+      $scope.toggleMin();
+
+      $scope.open = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope.opened = true;
+      };
+
+      $scope.dateOptions = {
+        formatYear: 'yy',
+        startingDay: 1
+      };
+ 
+      $scope.format = 'dd.MM.yyyy';
+
+      $scope.isEmpty = function(workshops){
+        if (workshops.length != 0) 
+          return true;
+        return false;
+
+        }
+
+     
+
+      }
 
 ]);
