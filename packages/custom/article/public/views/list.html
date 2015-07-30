@@ -1,0 +1,23 @@
+
+<section data-ng-controller="ArticleController" data-ng-init="find()">
+
+  <ul class="articles unstyled">
+    <li data-ng-repeat="article in articles">
+      <h2>
+        <a data-ng-href="/articles/{{article._id}}">{{article.name}}</a>
+
+          <a class="btn" href="/articles/{{article._id}}/edit/">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="remove(article);">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+
+      </h2>
+      
+    </li>
+  </ul>
+  <h1><a href="/articles/create/">Unesite clanak</a></h1>
+  <h1 data-ng-hide="!tags || tags.length">Niste uneli jos ni jedan clanak. <br>Zasto ne biste <a href="/articles/create/">Uneli jedan</a>?</h1>
+
+</section>

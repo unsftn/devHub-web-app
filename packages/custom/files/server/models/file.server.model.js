@@ -11,31 +11,35 @@ var mongoose = require('mongoose'),
  * Journal Schema
  */
 var FileDHSchema = new Schema({
-	filePath: {
-		type: String, 
-		required: 'Morate odabrati fajl.' 
-	},
-	date: {
-		type: Date,
-		default: Date.now
-	},
-	name: {
-		type: String,
-		unique: true,
-		required: 'Morate uneti ime i ono mora biti jedinstveno!'
-	}
+     fieldname:{
+		   type: String
+	   },
+     originalname:{
+		   type: String
+	   },
+     name: {
+		   type: String
+	   },
+     encoding:{
+		   type: String
+	   },
+     mimetype: {
+		   type: String
+	   },
+     path: {
+		   type: String
+	   },
+     extension: {
+		   type: String
+	   },
+     size: {
+		   type: String
+	   },
+         date: {
+                 type: Date,
+                 default: Date.now()
+         }
 });
-
-/**
- * Validations
- */
-FileDHSchema.path('filePath').validate(function(filePath) {
-  return !!filePath;
-}, 'Fajl mora biti uploadovan.');
-
-FileDHSchema.path('name').validate(function(name) {
-  return !!name;
-}, 'Naziv mora biti unet i mora biti jedinstven.');
 
 
 /**

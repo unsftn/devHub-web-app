@@ -25,7 +25,7 @@ Document.register(function(app, auth, database) {
     menu: 'main'
   });
   
-  
+ 
   
   Document.aggregateAsset('css', 'document.css');
 

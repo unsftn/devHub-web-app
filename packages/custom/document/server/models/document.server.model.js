@@ -15,7 +15,7 @@ var DocumentSchema = new Schema({
 		type: String,
 		default: '',
 		trim: true,
-		unique:true,
+		//unique:true,
 		required: 'Ime ne sme ostati prazno'
 	},
 	description: {

@@ -1,6 +1,6 @@
 'use strict';
 
-//Articles service used for articles REST endpoint
+//Document service used for articles REST endpoint
 angular.module('mean.document').factory('Document', ['$resource',
   function($resource) {
     return $resource('api/documents/:documentId', {
