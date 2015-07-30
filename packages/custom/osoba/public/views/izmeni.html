@@ -1,0 +1,28 @@
+<section data-ng-controller="OsobaController" data-ng-init="findOne()">
+	<h1>Izmena prakse!!!</h1>
+	<form name="osobaForm" data-ng-submit="update(true)">
+	<table border="3">
+		<tr>
+			<td>Ime:</td>
+			<td>{{osoba.ime}}</td>
+		</tr>
+		<tr>
+			<td>Prezime:</td>
+			<td><input type="text" data-ng-model="osoba.prezime"></td>
+		</tr>
+		<tr>
+			<td>Uloga:</td>
+			<td>
+				<select multiple data-ng-init="sveUloge()" data-ng-model="osoba.uloga">
+					<option data-ng-repeat="uloga in uloge" value="{{uloga.naziv}}" ng-selected="selekcija(osoba,uloga.naziv)">{{uloga.naziv}}</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="Izmeni">
+			</td>
+		</tr>
+	</table>
+	</form>
+</section>

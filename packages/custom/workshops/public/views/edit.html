@@ -1,5 +1,5 @@
 <section data-ng-controller="WorkshopsController" data-ng-init="findOne()">
-	<form name="workshopForm" class="form-horizontal col-md-6" data-ng-submit="create(workshopForm.$valid)" novalidate>
+	<form name="workshopForm" class="form-horizontal col-md-6" data-ng-submit="update(workshopForm.$valid)" novalidate>
 		<div class="form-group" ng-class="{ 'has-error' : submitted && workshopForm.title.$invalid }">
 			<label> Naziv </label>
 			<input name="title" type="text" class="form-control" data-ng-model="workshop.title" required>
@@ -64,7 +64,7 @@
 			<textarea class="form-control" name="tehnology" data-ng-model="workshop.mentors"></textarea>
 		</div>
 
-		<button mean-token="'create-submit'" type="submit" class="">Kreiraj</button>
+		<button mean-token="'edit-submit'" type="submit" class="">Kreiraj</button>
 
 	</form>
 </section> 

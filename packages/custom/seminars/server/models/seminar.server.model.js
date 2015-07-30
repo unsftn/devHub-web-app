@@ -20,19 +20,20 @@ var SeminarSchema = new Schema({
   
   startDate: {
     type: Date,
-    required: true,
+    //required: true,
    
   },
 
   endDate: {
     type: Date,
-    required: true
+   // required: true
 
   },
 
-  candidates: {
-    type: [String]
-  },
+  /*candidates: {
+    type: Schema.ObjectId,
+    ref: 'Osoba'
+  },*/
 
   participants: {
     type: [String]

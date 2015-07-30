@@ -32,8 +32,6 @@ module.exports = function(Seminars) {
                     });
                 }
 
-              
-
                 res.json(seminar);
             });
         },
@@ -73,7 +71,6 @@ module.exports = function(Seminars) {
         },
       
         show: function(req, res) {
-
           
             res.json(req.seminar);
         },
