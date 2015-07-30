@@ -35,6 +35,17 @@ Article.register(function(app, auth, database) {
         absolute: false,
         global: true
     });
+
+
+  Article.aggregateAsset('js', '../lib/ng-file-upload/ng-file-upload.min.js', {
+        absolute: false,
+        global: true
+    });
+     Article.aggregateAsset('js', '../lib/ng-file-upload/ng-file-upload-shim.js', {
+        absolute: false,
+        global: true
+    });
+
   /**
     //Uncomment to use. Requires meanio@0.3.7 or above
     // Save settings with callback

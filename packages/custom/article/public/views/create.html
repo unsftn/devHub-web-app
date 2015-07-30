@@ -1,5 +1,5 @@
 <section data-ng-controller="ArticleController">
-		<form name="articleForm" role="form" data-ng-submit="create(true)" enctype='multipart/form-data' novalidate>
+		<form name="articleForm" role="form" data-ng-submit="" enctype='multipart/form-data' novalidate>
 			<p>
 				<label for="title">Naslov</label>
 				<input type="text" name="title" id="title" data-ng-model="title">
@@ -28,9 +28,9 @@
 			
 			<p>
 				<label for="file">Izaberite dokument</label>
-				<input type="file" name="file" id="file" data-ng-model="file" style="color:white" accept="application/pdf" onchange="angular.element(this).scope().fileNameChanged(this)">
+				<input type="file" name="file" id="file" data-ng-model="file" style="color:white" accept="application/pdf">
 			</p>
-	
+
 			<p>
 			<p>Autori</p>
 		     <div class="addcontend">
@@ -42,7 +42,7 @@
 			</p>
 			
 		    <p>
-		        <button mean-token="'create-submit'" type="submit" class="btn btn-info">Napravi</button>
+		        <button mean-token="'create-submit'" type="submit" class="btn btn-info" onclick="angular.element(file).scope().onSubmit(file)">Napravi</button>
 		    </p>	
 		   <h1><a href="/articles/">Svi clanci</a></h1>
 		</form>

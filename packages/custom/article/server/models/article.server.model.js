@@ -15,7 +15,7 @@ var ArticleDHSchema = new Schema({
 	    //type: [Schema.ObjectId],
     	//ref: 'User',
     	type: String,
-		required: 'Morate uneti barem jednog autora.'
+		//required: 'Morate uneti barem jednog autora.'
 	},
 	editors: {
 	    //type: [Schema.ObjectId],
@@ -53,7 +53,7 @@ var ArticleDHSchema = new Schema({
 	},
 	grade: {
 		type: Number,
-		default: 0,
+		default: 1,
 		validate: [
 			function(grade) {
 				return grade && (grade < 5 && grade >0 );

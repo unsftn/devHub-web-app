@@ -159,7 +159,7 @@ module.exports = function(FileDHs) {
                 var data = {
                     message: 'File saved successfully.'
                 };
-                res.jsonp(data);
+                res.jsonp(filedh);
             });
             stream.end();
             console.log('Stream ended.');
