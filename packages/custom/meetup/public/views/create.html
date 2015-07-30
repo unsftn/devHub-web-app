@@ -22,16 +22,24 @@
       </div>
     </div>
 
+    <div class="form-group" ng-class="{ 'has-error' : submitted && meetupForm.date.$invalid }">
+      <h4>Date</h4>
+      <div style="display:inline-block; min-height:290px;">
+        <datepicker ng-model="meetup.date" min-date="minDate" show-weeks="true" class="well well-sm" custom-class="getDayClass(date, mode)"></datepicker>
+    </div>
+    </div>
 
-    <div  data-ng-init = "allLectures()">
-      <fieldset data-role="controlgroup">
-        <legend>Select lectures for this meetup</legend>
-          <label ng-repeat="lecture in lectures">
-           <input type="checkbox" name="{{lecture.name}}" id="{{lecture.name}}"  checklist-model="meetup.lectures" checklist-value="{{lectures.name}}" ng-model="lecture.selected">
-           <label for="{{lecture.name}}">{{lecture.name}}</label>
-          </label>
-      </fieldset>
-   </div>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && meetupForm.date.$invalid }">
+      <div  data-ng-init = "allLectures()">
+        <fieldset data-role="controlgroup">
+          <legend>Select lectures for this meetup</legend>
+            <label ng-repeat="lecture in lectures">
+             <input type="checkbox" name="{{lecture.name}}" id="{{lecture.name}}"  checklist-model="meetup.lectures" checklist-value="{{lectures.name}}" ng-model="lecture.selected">
+             <label for="{{lecture.name}}">{{lecture.name}}</label>
+            </label>
+        </fieldset>
+     </div>
+     </div>
 
     <div class="form-group">
       <div class="col-md-offset-3 col-md-9">
