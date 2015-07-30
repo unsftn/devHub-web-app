@@ -12,7 +12,7 @@ var mean = require('meanio'),
   helpers = require('view-helpers'),
   flash = require('connect-flash'),
   modRewrite = require('connect-modrewrite'),
-
+  multer  = require('multer'),
   // seo = require('mean-seo'),
   config = mean.loadConfig();
 

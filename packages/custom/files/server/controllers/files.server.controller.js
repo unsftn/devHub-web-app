@@ -5,7 +5,9 @@
  */
 var mongoose = require('mongoose'),
     FileDH = mongoose.model('FileDH'),
-    _ = require('lodash');
+    multer = require('multer'),
+        _ = require('lodash');
+
 
 module.exports = function(FileDHs) {
 
@@ -63,6 +65,7 @@ module.exports = function(FileDHs) {
          * Delete an filedh
          */
         destroy: function(req, res) {
+            var fs = require('fs');
             var filedh = req.filedh;
 
 
@@ -74,6 +77,16 @@ module.exports = function(FileDHs) {
                 }
 
                 res.json(filedh);
+                
+                fs.unlink(filedh.path, function() {
+                    /*
+                  res.send ({
+                    status: "200",
+                    responseType: "string",
+                    response: "success"
+                  });   
+                  */  
+                });
             });
         },
         /**
@@ -97,6 +110,60 @@ module.exports = function(FileDHs) {
                 res.json(data)
             });
 
+        },
+  
+        fileUpload: function(req, res) {
+            var file = req.files.file,
+                fs = require('fs'),
+                path = './uploads/';
+            console.log(file);
+            // Logic for handling missing file, wrong mimetype, no buffer, etc.
+            var buffer = file.buffer, //Note: buffer only populates if you set inMemory: true.
+                fileName = file.name;
+            var stream = fs.createWriteStream(path + fileName);
+            stream.write(buffer);
+            stream.on('error', function(err) {
+                console.log('Could not write file to memory.');
+                res.status(400).send({
+                    message: 'Problem saving the file. Please try again.'
+                });
+            });
+            stream.on('finish', function() {
+
+                var filedh = new FileDH();
+                filedh.fieldname = file.fieldname;     
+                filedh.originalname = file.originalname;
+                filedh.name = file.name;
+                filedh.encoding = file.encoding;
+                filedh.mimetype = file.mimetype;
+                filedh.path = file.path;
+                filedh.extension = file.extension;
+                filedh.size = file.size;
+               // filedh.userDocument.truncated = file.truncated;
+              //  filedh.userDocument.buffer = file.buffer;
+                
+                console.log(filedh);
+
+                filedh.save(function(err) {
+                    if (err) {
+                        console.log(err);
+                        return res.status(500).json({
+                            error: 'Ne moze da sacuva fajl'
+                        });
+                    }
+    
+                  //res.json(filedh);
+                });
+                
+                
+                var data = {
+                    message: 'File saved successfully.'
+                };
+                res.jsonp(filedh);
+            });
+            stream.end();
+            console.log('Stream ended.');
         }
     };
+    
 }
