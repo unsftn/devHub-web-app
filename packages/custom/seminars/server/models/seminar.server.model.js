@@ -30,8 +30,10 @@ var SeminarSchema = new Schema({
 
   },
 
-  candidates: {
-    type: [String]
+ candidates: {
+    type: [Schema.ObjectId],
+    ref: 'Osoba'
+
   },
 
   participants: {
@@ -40,6 +42,10 @@ var SeminarSchema = new Schema({
 
   workshops: {
     type: [String]
+  },
+
+  location: {
+    type: String
   }
  
 });

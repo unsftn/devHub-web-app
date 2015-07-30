@@ -6,11 +6,11 @@ module.exports = function(Seminars, app, auth, database) {
 
   app.route('/api/seminars')
     .get(seminars.all)
-    .post(/*auth.requiresLogin, */seminars.create);
+    .post(seminars.create);
   app.route('/api/seminars/:seminarId')
     .get(auth.isMongoId, seminars.show)
-    .put(auth.isMongoId, auth.requiresLogin, /*hasAuthorization, hasPermissions, */seminars.update)
-    .delete(auth.isMongoId, auth.requiresLogin, /*hasAuthorization, */seminars.destroy);
+    .put(auth.isMongoId, seminars.update)
+    .delete(auth.isMongoId,seminars.destroy);
 
   // Finish with setting up the articleId param
   app.param('seminarId', seminars.seminar);

@@ -109,10 +109,14 @@ angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$st
           return true;
         return false;
 
-        }
+        };
 
-     
-
-      }
-
+     /* $scope.addCandidate = function() {
+          var osoba = new Osobe($scope.osoba);
+         
+          $scope.seminar.candidates.push(osoba);
+          $scope.update(true);
+         
+      };*/
+    }
 ]);
