@@ -1,5 +1,7 @@
 {
   "name": "meetup",
   "version": "0.0.1",
-  "dependencies": {}
+  "dependencies": {
+    "ngmap": "~1.10.0"
+  }
 }
