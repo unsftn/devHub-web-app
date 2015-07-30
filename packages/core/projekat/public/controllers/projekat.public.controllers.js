@@ -10,8 +10,9 @@ angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$lo
 
     $scope.nesto = "nestoAAA";	
 
+    $scope.today=new Date();
+
     $scope.create = function(isValid) {
-      alert($scope.mentori);
       if (isValid) {
         // $scope.projekat.permissions.push('test test');
         var projekat = new Projekti($scope.projekat);
@@ -109,15 +110,36 @@ angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$lo
           $scope.mentori.push($scope.osoba.ime+" "+$scope.osoba.prezime);  
         } else if ($scope.osoba.uloga=="ucesnik") {
           $scope.ucesnici.push($scope.osoba.ime+" "+$scope.osoba.prezime);
-        }
-        $scope.selected = "true";
-      } else {
+        }      } else {
         $scope.submitted = true;
       }
 
     };
 
-    $scope.selected = "true";
+    //podesavanje datuma
+      $scope.today = function() {
+          $scope.dt = new Date();
+      };
+      $scope.today();
+
+      $scope.toggleMin = function() {
+          $scope.minDate = $scope.minDate ? null : new Date();
+      };
+      $scope.toggleMin();
+
+      $scope.open = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope.opened = true;
+      };
+
+      $scope.dateOptions = {
+        formatYear: 'yy',
+        startingDay: 1
+      };
+ 
+      $scope.format = 'dd.MM.yyyy';
 
   }
 ]);

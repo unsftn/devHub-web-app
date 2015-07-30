@@ -1,0 +1,57 @@
+commit 382c4a6fbdf56b2212d6213ee638fecb36fca3bd
+Author: Milan Mutic <muticmilan93@gmail.com>
+Date:   Wed Jul 29 12:30:13 2015 +0200
+
+    odradjeno povezivanje projekta i prakse; popunjeni svi njihovi atributi osim komentara, tehnologija i datuma; ukljucen bootstrap
+
+commit 813d95e7d1143397578f56afbe77e204e8bb36c5
+Author: Milan Mutic <muticmilan93@gmail.com>
+Date:   Tue Jul 28 13:45:55 2015 +0200
+
+    dodati mentori i ucesnici u projekat
+
+commit 0723cc826023ce371f34ef7fb5ea60ce7b8dbbf6
+Author: Milan Mutic <muticmilan93@gmail.com>
+Date:   Mon Jul 27 13:02:21 2015 +0200
+
+    entitet praksa povezan sa 1 ili vise projekata
+
+commit c83fb46941b85e0f43d472782d74a64c5dc6ae46
+Author: Milan Mutic <muticmilan93@gmail.com>
+Date:   Fri Jul 24 13:38:13 2015 +0200
+
+    odradjen entitet projekat, popraviti datum i kandidate
+
+commit 4c577da4d370e0a5bb6d0ab24e84b7a09f956dfe
+Author: Milan Mutic <muticmilan93@gmail.com>
+Date:   Thu Jul 23 11:16:47 2015 +0200
+
+    odradjen server folder za entitet PROJEKAT - radi dodavanje preko rest zahteva (curl)
+
+commit 329550479323d11c3d898902058b68ab3e01c3f6
+Author: Milan Mutic <muticmilan93@gmail.com>
+Date:   Wed Jul 22 13:30:19 2015 +0200
+
+    probni fajl proba3.txt
+
+commit da5b05accdf8deee92ba34a1602ab34823dca98d
+Merge: 7e16db6 c74e1b9
+Author: Milan Mutic <muticmilan93@gmail.com>
+Date:   Wed Jul 22 12:23:40 2015 +0200
+
+    Merge branch 'master' of https://github.com/unsftn/devHub-web-app
+    
+    Conflicts:
+    	README.md
+
+commit 7e16db6b76403135858750211ecc3d070d07128c
+Author: Milan Mutic <muticmilan93@gmail.com>
+Date:   Wed Jul 22 12:22:15 2015 +0200
+
+    init commit
+
+commit c74e1b92116bb52aa7155f3aaded6a7b3e11db52
+Author: Luburic <luburic91@gmail.com>
+Date:   Wed Jul 15 10:03:23 2015 +0200
+
+    Initial commit

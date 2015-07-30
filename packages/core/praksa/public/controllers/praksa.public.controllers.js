@@ -10,6 +10,8 @@ angular.module('mean.praksa').controller('PraksaController', ['$scope', '$locati
 
     $scope.nesto = "nestoAAA";	
 
+    $scope.today=new Date();
+
     $scope.create = function(isValid) {
       if (isValid) {
         // $scope.praksa.permissions.push('test test');
@@ -48,7 +50,6 @@ angular.module('mean.praksa').controller('PraksaController', ['$scope', '$locati
       //alert("Izmena projekta sa nazivom: "+isValid.naziv + ". OTVORITI POPUNJENU FORMU ZA IZMENU PROJEKTA!!!");
       //return;
       if (isValid) {
-        alert("nova vrednost lokacije prakse: " + $scope.praksa.lokacija);
         var praksa = $scope.praksa;
         if (!praksa.updated) {
           praksa.updated = [];
@@ -138,5 +139,31 @@ angular.module('mean.praksa').controller('PraksaController', ['$scope', '$locati
       }
 
     };
+
+     //podesavanje datuma
+      $scope.today = function() {
+          $scope.dt = new Date();
+      };
+      $scope.today();
+
+      $scope.toggleMin = function() {
+          $scope.minDate = $scope.minDate ? null : new Date();
+      };
+      $scope.toggleMin();
+
+      $scope.open = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope.opened = true;
+      };
+
+      $scope.dateOptions = {
+        formatYear: 'yy',
+        startingDay: 1
+      };
+ 
+      $scope.format = 'dd.MM.yyyy';
+
   }
 ]);

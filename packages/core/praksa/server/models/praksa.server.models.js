@@ -44,21 +44,21 @@ var PraksaSchema = new Schema({
   mentori: {
     type: [String],
     trim: true,
-    default: ""
+    default: []
   },
   
   //-----UCESNICI
   ucesnici: {
     type: [String],
     trim: true,
-    default: ""
+    default: []
   },
 
   //-----KANDIDATI
   kandidati: {
     type: [String],
     trim: true,
-    default: ""
+    default: []
   },
 
   //////////////////////////////////////
