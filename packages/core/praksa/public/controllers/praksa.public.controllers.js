@@ -1,11 +1,11 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$location', 'Global', 'Projekti','$stateParams', 'Prakse', 'Ulogaosobe',
-  function($scope, $location, Global, Projekti, $stateParams, Prakse, Ulogaosobe) {
+angular.module('mean.praksa').controller('PraksaController', ['$scope', '$location', 'Global', 'Prakse','$stateParams', 'Projekti', 'Ulogaosobe',
+  function($scope, $location, Global, Prakse, $stateParams, Projekti, Ulogaosobe) {
     $scope.global = Global;
     $scope.package = {
-      name: 'projekat'
+      name: 'praksa'
     };
 
     $scope.nesto = "nestoAAA";	
@@ -14,34 +14,34 @@ angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$lo
 
     $scope.create = function(isValid) {
       if (isValid) {
-        // $scope.projekat.permissions.push('test test');
-        var projekat = new Projekti($scope.projekat);
+        // $scope.praksa.permissions.push('test test');
+        var praksa = new Prakse($scope.praksa);
 
-        projekat.$save(function(response) {
-          $location.path('projekat/lista');
+        praksa.$save(function(response) {
+          $location.path('praksa/lista');
           //$location.path('Projekti/' + response._id);
         }, function() {$location.path('login');});
 
-        $scope.projekat = {};
+        $scope.praksa = {};
 
       } else {
         $scope.submitted = true;
       }
     };
 
-    $scope.remove = function(projekat) {
-      if (projekat) {
-        projekat.$remove(function(response) {
-          for (var i in $scope.projekti) {
-            if ($scope.projekti[i] === projekat) {
-              $scope.projekti.splice(i, 1);
+    $scope.remove = function(praksa) {
+      if (praksa) {
+        praksa.$remove(function(response) {
+          for (var i in $scope.prakse) {
+            if ($scope.prakse[i] === praksa) {
+              $scope.prakse.splice(i, 1);
             }
           }
-          $location.path('projekat/lista');
+          $location.path('praksa/lista');
         });
       } else {
-        $scope.projekat.$remove(function(response) {
-          $location.path('projekat/lista');
+        $scope.praksa.$remove(function(response) {
+          $location.path('praksa/lista');
         });
       }
     };
@@ -50,14 +50,14 @@ angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$lo
       //alert("Izmena projekta sa nazivom: "+isValid.naziv + ". OTVORITI POPUNJENU FORMU ZA IZMENU PROJEKTA!!!");
       //return;
       if (isValid) {
-        var projekat = $scope.projekat;
-        if (!projekat.updated) {
-          projekat.updated = [];
+        var praksa = $scope.praksa;
+        if (!praksa.updated) {
+          praksa.updated = [];
         }
-        projekat.updated.push(new Date().getTime());
+        praksa.updated.push(new Date().getTime());
 
-        projekat.$update(function() {
-          $location.path('projekat/lista');
+        praksa.$update(function() {
+          $location.path('praksa/lista');
         });
       } else {
         $scope.submitted = true;
@@ -67,20 +67,40 @@ angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$lo
     $scope.find = function() {
       $scope.nesto = "u find() pre query";  
       
+      Prakse.query(function(prakse) {
+        $scope.nesto = "u find() u query!"
+        $scope.prakse = prakse;
+      });
+    };
+
+    $scope.findOne = function() {
+      Prakse.get({
+        praksaId: $stateParams.praksaId
+      }, function(praksa) {
+        $scope.praksa = praksa;
+        $scope.mentori = praksa.mentori;
+        $scope.ucesnici = praksa.ucesnici;
+        $scope.kandidati = praksa.kandidati;
+      });
+    };
+
+    $scope.allProjects = function() {
+      $scope.nesto = "u find() pre query";  
+      
       Projekti.query(function(projekti) {
         $scope.nesto = "u find() u query!"
         $scope.projekti = projekti;
       });
     };
 
-    $scope.findOne = function() {
-      Projekti.get({
-        projekatId: $stateParams.projekatId
-      }, function(projekat) {
-        $scope.projekat = projekat;
-        $scope.mentori = projekat.mentori;
-        $scope.ucesnici = projekat.ucesnici;
-      });
+    $scope.selekcija = function(praksa, projekat) {
+      $scope.nesto = "u find() pre query";  
+      
+      for (var i in praksa.projekti) {
+      	if (praksa.projekti[i]==projekat)
+      		return true;
+      }
+      return false;
     };
 
     $scope.sveUloge = function() {
@@ -94,8 +114,9 @@ angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$lo
 
     $scope.mentori=[];
     $scope.ucesnici=[];
+    $scope.kandidati=[];
 
-    $scope.dodajMenUce = function(isValid) {
+    $scope.dodajMenUceKan = function(isValid) {
       if (isValid) {
         // $scope.projekat.permissions.push('test test');
         /*var projekat = new Projekti($scope.projekat);
@@ -110,13 +131,16 @@ angular.module('mean.projekat').controller('ProjekatController', ['$scope', '$lo
           $scope.mentori.push($scope.osoba.ime+" "+$scope.osoba.prezime);  
         } else if ($scope.osoba.uloga=="ucesnik") {
           $scope.ucesnici.push($scope.osoba.ime+" "+$scope.osoba.prezime);
-        }      } else {
+        } else if ($scope.osoba.uloga=="kandidat") {
+          $scope.kandidati.push($scope.osoba.ime+" "+$scope.osoba.prezime);
+        } 
+      } else {
         $scope.submitted = true;
       }
 
     };
 
-    //podesavanje datuma
+     //podesavanje datuma
       $scope.today = function() {
           $scope.dt = new Date();
       };

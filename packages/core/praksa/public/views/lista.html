@@ -1,0 +1,51 @@
+<section>
+	<h1>LISTA POSTOJECIH PRAKSI</h1>
+	<section data-ng-controller="PraksaController" data-ng-init="find()">
+		<table border="2" align="center">
+			<tr class="row">
+				<th class="col-md-6" align="center">Naziv</th>
+				<th class="col-md-6" align="center">Datum pocetka</th>
+				<th class="col-md-6" align="center">Datum kraja</th>
+				<th class="col-md-6" align="center">Tehnologije</th>
+				<th class="col-md-6" align="center">Projekti</th>
+				<th class="col-md-6" align="center">Mentori</th>
+				<th class="col-md-6" align="center">Ucesnici</th>
+				<th class="col-md-6" align="center">Kandidati</th>
+				<th class="col-md-6" align="center">Lokacija</th>
+				<th class="col-md-6" align="center">Brisi/Izmeni</th>
+			</tr>
+			<tr class="row" data-ng-repeat="praksa in prakse">
+				<td class="col-md-6" align="center">{{praksa.naziv}}</td>
+				<td class="col-md-6" align="center">{{praksa.datumPocetka | date:'dd-MM-yyyy'}}</td>
+				<td class="col-md-6" align="center">{{praksa.datumKraja | date:'dd-MM-yyyy'}}</td>
+				<td class="col-md-6" align="center">{{praksa.tehnologije}}</td>
+				<td class="col-md-6" align="center">
+					<select multiple>
+					<option data-ng-repeat="projekat in praksa.projekti">{{projekat}}</option>
+					</select>
+				</td>
+				<td class="col-md-6" align="center">
+					<select multiple>
+					<option data-ng-repeat="mentor in praksa.mentori">{{mentor}}</option>
+					</select>
+				</td>
+				<td class="col-md-6" align="center">
+					<select multiple>
+					<option data-ng-repeat="ucesnik in praksa.ucesnici">{{ucesnik}}</option>
+					</select>
+				</td>
+				<td class="col-md-6" align="center">
+					<select multiple>
+					<option data-ng-repeat="kandidat in praksa.kandidati">{{kandidat}}</option>
+					</select>
+				</td>
+				<td class="col-md-6" align="center">{{praksa.lokacija}}</td>
+				<td class="col-md-6" align="center">
+					<input type="button" class="btn btn-info" value="Brisi" data-ng-click="remove(praksa)"/>
+					&nbsp;&nbsp;
+					<a href="/praksa/izmeni/{{praksa._id}}">Izmeni</a>
+				</td>
+			</tr>
+		</table>
+	</section>
+</section>

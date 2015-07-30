@@ -1,32 +1,114 @@
 <section data-ng-controller="ProjekatController">
-	<h1>Dodavanje novog projekta!!!</h1>
+	<h1>Dodavanje novog projekta...</h1>
+	<table width="150%">
+	<tr class="row">
+	<td class="col-md-6" align="left">
 	<form name="projekatForm" data-ng-submit="create(true)">
 	<table border="3">
-		<tr>
-			<td>Naziv:</td>
-			<td><input type="text" data-ng-model="projekat.naziv"></td>
+		<tr class="row">
+			<td class="col-md-6" align="center">Naziv:</td>
+			<td class="col-md-6"><input type="text" class="form-control" data-ng-model="projekat.naziv"></td>
 		</tr>
-		<tr>
-			<td>Opis:</td>
-			<td><input type="text" data-ng-model="projekat.opis"></td>
+		<tr class="row">
+			<td class="col-md-6" colspan="2">
+			
+		<div class="form-group" ng-class="{ 'has-error' : submitted && workshopForm.startDate.$invalid }">		
+	    <div class="col-md-6">
+            <p class="input-group">
+            <label>Datum početka</label> 
+              <input type="text" name="startDate" class="form-control" datepicker-popup={{format}} data-ng-model="projekat.datumPocetka" is-open="opened" min-date="minDate"  datepicker-options="dateOptions" ng-required="true" close-text="Close" disabled="disabled"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        
+			<div ng-show="submitted && workshopForm.startDate.$invalid" class="help-block">
+        	<p ng-show="workshopForm.startDate.$error.required">Morate uneti datum početka radionice!</p>
+       		</div>
+		</div>
+		<div class="form-group" ng-class="{ 'has-error' : submitted && workshopForm.endDate.$invalid }">
+            <p class="input-group">
+            <label>Datum kraja</label>
+              <input type="text" name="endDate" class="form-control" datepicker-popup="{{format}}" data-ng-model="projekat.datumKraja" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" disabled="disabled" />
+            </p>
+
+            <div ng-show="submitted && workshopForm.endDate.$invalid" class="help-block">
+        	<p ng-show="workshopForm.endDate.$error.required">Morate uneti datum kraja radionice!</p>
+       		</div>
+		</div>
+		</div>
+
+			</td>
 		</tr>
-		<tr>
-			<td>Sadrzaj:</td>
-			<td><input type="text" data-ng-model="projekat.sadrzaj"></td>
+		<tr class="row">
+			<td class="col-md-6" align="center">Opis:</td>
+			<td class="col-md-6"><input type="text" class="form-control" data-ng-model="projekat.opis"></td>
 		</tr>
-		<tr>
-			<td>Link repozitorijuma:</td>
-			<td><input type="text" data-ng-model="projekat.linkRepozitorijuma"></td>
+		<tr class="row">
+			<td class="col-md-6" align="center">Sadrzaj:</td>
+			<td class="col-md-6"><input type="text" class="form-control" data-ng-model="projekat.sadrzaj"></td>
 		</tr>
-		<tr>
-			<td>Status:</td>
-			<td><input type="text" data-ng-model="projekat.status"></td>
+		<tr class="row">
+			<td class="col-md-6" align="center">Mentori:</td>
+			<td class="col-md-6">
+				<select multiple class="form-control" data-ng-model="projekat.mentori">
+					<option data-ng-repeat="mentor in mentori" value="{{mentor}}">{{mentor}}</option>
+				</select>
+			</td>
 		</tr>
-		<tr>
-			<td colspan="2" align="center">
-				<input type="submit" value="Dodaj">
+		<tr class="row">
+			<td class="col-md-6" align="center">Ucesnici:</td>
+			<td class="col-md-6">
+				<select multiple class="form-control" data-ng-model="projekat.ucesnici">
+					<option data-ng-repeat="ucesnik in ucesnici" value="{{ucesnik}}">{{ucesnik}}</option>
+				</select>
+			</td>
+		</tr>
+		<tr class="row">
+			<td class="col-md-6" align="center">Link repozitorijuma:</td>
+			<td class="col-md-6"><input type="text" class="form-control" data-ng-model="projekat.linkRepozitorijuma"></td>
+		</tr>
+		<tr class="row">
+			<td class="col-md-6" align="center">Status:</td>
+			<td class="col-md-6"><input type="text" class="form-control" data-ng-model="projekat.status"></td>
+		</tr>
+		<tr class="row">
+			<td class="col-md-6" colspan="2" align="center">
+				<input type="submit" class="btn btn-primary" value="Dodaj">
 			</td>
 		</tr>
 	</table>
 	</form>
+	
+	<td class="col-md-6" align="left">
+	<form name="dodajMenUceForm" data-ng-submit="dodajMenUce(true)">
+	<table border="3" width="60%">
+		<tr class="row">
+			<th class="col-md-6" colspan="2">Dodavanje mentora/uCesnika</th>
+		</tr>
+		<tr class="row">
+			<td class="col-md-6" align="center">Ime:</td>
+			<td class="col-md-6"><input type="text" class="form-control" data-ng-model="osoba.ime"></td>
+		</tr>
+		<tr class="row">
+			<td class="col-md-6" align="center">Prezime:</td>
+			<td class="col-md-6"><input type="text" class="form-control" data-ng-model="osoba.prezime"></td>
+		</tr>
+		<tr class="row">
+			<td class="col-md-6" align="center">Uloga:</td>
+			<td class="col-md-6">
+				<select data-ng-init="sveUloge()" data-ng-model="osoba.uloga">
+					<option data-ng-repeat="uloga in uloge" value="{{uloga.naziv}}" ng-selected="true">{{uloga.naziv}}</option>
+				</select>
+			</td>
+		</tr>
+		<tr class="row">
+			<td class="col-md-6" colspan="2" align="center">
+				<input type="submit" class="btn btn-primary" value="Dodaj">
+			</td>
+		</tr>
+	</table>
+	</form>
+	</td>
+	</table>
 </section>

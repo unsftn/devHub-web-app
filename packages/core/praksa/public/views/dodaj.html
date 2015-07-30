@@ -1,13 +1,17 @@
-<section data-ng-controller="ProjekatController" data-ng-init="findOne()">
-	<h1>Izmena projekta...</h1>
+<section data-ng-controller="PraksaController">
+	<h1>Dodavanje nove prakse...</h1>
 	<table width="150%">
 	<tr class="row">
 	<td class="col-md-6" align="left">
-	<form name="projekatForm" data-ng-submit="update(true)">
-	<table border="3">
+	<form name="praksaForm" data-ng-submit="create(true)">
+	<table border="3" width="100%">
 		<tr class="row">
 			<td class="col-md-6" align="center">Naziv:</td>
-			<td class="col-md-6" align="center">{{projekat.naziv}}</td>
+			<td class="col-md-6"><input type="text" class="form-control" data-ng-model="praksa.naziv"></td>
+		</tr>
+		<tr class="row">
+			<td class="col-md-6" align="center">Lokacija:</td>
+			<td class="col-md-6"><input type="text" class="form-control" data-ng-model="praksa.lokacija"></td>
 		</tr>
 		<tr class="row">
 			<td class="col-md-6" colspan="2">
@@ -16,7 +20,7 @@
 	    <div class="col-md-6">
             <p class="input-group">
             <label>Datum početka</label> 
-              <input type="text" name="startDate" class="form-control" datepicker-popup={{format}} data-ng-model="projekat.datumPocetka" is-open="opened" min-date="minDate"  datepicker-options="dateOptions" ng-required="true" close-text="Close" disabled="disabled"/>
+              <input type="text" name="startDate" class="form-control" datepicker-popup={{format}} data-ng-model="praksa.datumPocetka" is-open="opened" min-date="minDate"  datepicker-options="dateOptions" ng-required="true" close-text="Close" disabled="disabled"/>
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -29,7 +33,7 @@
 		<div class="form-group" ng-class="{ 'has-error' : submitted && workshopForm.endDate.$invalid }">
             <p class="input-group">
             <label>Datum kraja</label>
-              <input type="text" name="endDate" class="form-control" datepicker-popup="{{format}}" data-ng-model="projekat.datumKraja" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" disabled="disabled" />
+              <input type="text" name="endDate" class="form-control" datepicker-popup="{{format}}" data-ng-model="praksa.datumKraja" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" disabled="disabled" />
             </p>
 
             <div ng-show="submitted && workshopForm.endDate.$invalid" class="help-block">
@@ -41,63 +45,62 @@
 			</td>
 		</tr>
 		<tr class="row">
-			<td class="col-md-6" align="center">Opis:</td>
-			<td class="col-md-6" align="center"><input type="text" class="form-control" data-ng-model="projekat.opis"></td>
-		</tr>
-		<tr class="row">
-			<td class="col-md-6" align="center">Sadrzaj:</td>
-			<td class="col-md-6" align="center"><input type="text" class="form-control" data-ng-model="projekat.sadrzaj"></td>
+			<td class="col-md-6" align="center">Projekti:</td>
+			<td class="col-md-6">
+				<select multiple data-ng-init="allProjects()" data-ng-model="praksa.projekti">
+					<option data-ng-repeat="projekat in projekti" value="{{projekat.naziv}}">{{projekat.naziv}}</option>
+				</select>
+			</td>
 		</tr>
 		<tr class="row">
 			<td class="col-md-6" align="center">Mentori:</td>
-			<td class="col-md-6" align="center">
-				<select multiple class="form-control" data-ng-model="projekat.mentori">
+			<td class="col-md-6">
+				<select multiple class="form-control" data-ng-model="praksa.mentori">
 					<option data-ng-repeat="mentor in mentori" value="{{mentor}}">{{mentor}}</option>
 				</select>
 			</td>
 		</tr>
 		<tr class="row">
 			<td class="col-md-6" align="center">Ucesnici:</td>
-			<td class="col-md-6" align="center">
-				<select multiple class="form-control" data-ng-model="projekat.ucesnici">
-					<option data-ng-repeat="ucesnik in projekat.ucesnici" value="{{ucesnik}}">{{ucesnik}}</option>
+			<td class="col-md-6">
+				<select multiple class="form-control" data-ng-model="praksa.ucesnici">
+					<option data-ng-repeat="ucesnik in ucesnici" value="{{ucesnik}}">{{ucesnik}}</option>
 				</select>
 			</td>
 		</tr>
 		<tr class="row">
-			<td class="col-md-6" align="center">Link repozitorijuma:</td>
-			<td class="col-md-6" align="center"><input type="text" class="form-control" data-ng-model="projekat.linkRepozitorijuma"></td>
-		</tr>
-		<tr class="row">
-			<td class="col-md-6" align="center">Status:</td>
-			<td class="col-md-6" align="center"><input type="text" class="form-control" data-ng-model="projekat.status"></td>
+			<td class="col-md-6" align="center">Kandidati:</td>
+			<td class="col-md-6">
+				<select multiple class="form-control" data-ng-model="praksa.kandidati">
+					<option data-ng-repeat="kandidat in kandidati" value="{{kandidat}}">{{kandidat}}</option>
+				</select>
+			</td>
 		</tr>
 		<tr class="row">
 			<td class="col-md-6" colspan="2" align="center">
-				<input type="submit" class="btn btn-primary" value="Izmeni">
+				<input type="submit" class="btn btn-primary" value="Dodaj">
 			</td>
 		</tr>
 	</table>
 	</form>
 	</td>
-	
 	<td class="col-md-6" align="left">
-	<form name="dodajMenUceForm" data-ng-submit="dodajMenUce(true)">
+	<form name="dodajMenUceKanForm" data-ng-submit="dodajMenUceKan(true)">
 	<table border="3" width="60%">
 		<tr class="row">
-			<th class="col-md-6" colspan="2" align="center">Dodavanje mentora/ucesnika</th>
+			<th class="col-md-6" colspan="2">Dodavanje mentora/ucesnika/kandidata</th>
 		</tr>
 		<tr class="row">
 			<td class="col-md-6" align="center">Ime:</td>
-			<td class="col-md-6" align="center"><input type="text" class="form-control" data-ng-model="osoba.ime"></td>
+			<td class="col-md-6"><input type="text" class="form-control" data-ng-model="osoba.ime"></td>
 		</tr>
 		<tr class="row">
 			<td class="col-md-6" align="center">Prezime:</td>
-			<td class="col-md-6" align="center"><input type="text" class="form-control" data-ng-model="osoba.prezime"></td>
+			<td class="col-md-6"><input type="text" class="form-control" data-ng-model="osoba.prezime"></td>
 		</tr>
 		<tr class="row">
 			<td class="col-md-6" align="center">Uloga:</td>
-			<td class="col-md-6" align="center">
+			<td class="col-md-6">
 				<select data-ng-init="sveUloge()" data-ng-model="osoba.uloga">
 					<option data-ng-repeat="uloga in uloge" value="{{uloga.naziv}}" ng-selected="true">{{uloga.naziv}}</option>
 				</select>
@@ -111,5 +114,6 @@
 	</table>
 	</form>
 	</td>
+	</tr>
 	</table>
 </section>

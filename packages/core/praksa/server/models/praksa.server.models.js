@@ -8,23 +8,33 @@ var mongoose = require('mongoose'),
 
 
 /**
- * Projekat Schema
+ * Praksa Schema
  */
-var ProjekatSchema = new Schema({
+var PraksaSchema = new Schema({
   naziv: {
     type: String,
     required: true,
     unique: true,
     trim: true
   },
-  opis: {
-    type: String,
-    required: true,
-    trim: true
+  datumPocetka: {
+    type: Date,
+    default: Date.now
   },
-  sadrzaj: {
-    type: String,
-    required: true,
+  datumKraja: {
+    type: Date,
+    default: Date.now
+  },
+  tehnologije: {
+    type: [String],
+    trim: true,
+    default: ""
+  },
+  projekti: {
+    /*type: [Schema.ObjectId],
+    ref: 'Projekat',*/
+    type: [String],   //string mi predstavlja NAZIV projekta!!!
+    //required: true,
     trim: true
   },
   //////////////////////////////////////
@@ -34,36 +44,25 @@ var ProjekatSchema = new Schema({
   mentori: {
     type: [String],
     trim: true,
-    default: ""
+    default: []
   },
   
   //-----UCESNICI
   ucesnici: {
     type: [String],
     trim: true,
-    default: ""
+    default: []
+  },
+
+  //-----KANDIDATI
+  kandidati: {
+    type: [String],
+    trim: true,
+    default: []
   },
 
   //////////////////////////////////////
-  datumPocetka: {
-    type: Date,
-    default: Date.now
-  },
-  datumKraja: {
-    type: Date,
-    default: Date.now
-  },
-  linkRepozitorijuma: {
-    type: String,
-    trim: true,
-    default: ""
-  },
-  komentari: {
-    type: [String],
-    trim: true,
-    default: ""
-  },
-  status: {
+  lokacija: {
     type: String,
     trim: true,
     default: ""
@@ -73,21 +72,21 @@ var ProjekatSchema = new Schema({
 /**
  * Validations
  */
-ProjekatSchema.path('naziv').validate(function(naziv) {
+PraksaSchema.path('naziv').validate(function(naziv) {
   return !!naziv;
 }, 'Naziv ne sme biti prazan');
 
-/*ProjekatSchema.path('desc').validate(function(desc) {
+/*PraksaSchema.path('desc').validate(function(desc) {
   return !!desc;
 }, 'Description cannot be blank');*/
 
 /**
  * Statics
  */
-ProjekatSchema.statics.load = function(id, cb) {
+PraksaSchema.statics.load = function(id, cb) {
   this.findOne({
     _id: id
   })/*.populate('user', 'name username')*/.exec(cb);
 };
 
-mongoose.model('Projekat', ProjekatSchema);
+mongoose.model('Praksa', PraksaSchema);
