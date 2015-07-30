@@ -24,6 +24,11 @@ Meetup.register(function(app, auth, database) {
   });
   
   Meetup.aggregateAsset('css', 'meetup.css');
+    Meetup.aggregateAsset('js', '../lib/ngmap/build/scripts/ng-map.js', {
+      absolute: false,
+      global: true
+    });
+
 
   /**
     //Uncomment to use. Requires meanio@0.3.7 or above

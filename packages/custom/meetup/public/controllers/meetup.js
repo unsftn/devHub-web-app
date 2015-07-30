@@ -1,14 +1,17 @@
 'use strict';
 
-angular.module('mean.meetup').controller('MeetupsController',['$scope', '$stateParams', '$location', 'Global', 'Meetups', 'Lectures','MeanUser', 'Circles',
+angular.module('mean.meetup', ['ngMap']).controller('MeetupsController',['$scope', '$stateParams', '$location', 'Global', 'Meetups', 'Lectures','MeanUser', 'Circles',
+
 
 	function($scope, $stateParams, $location, Global, Meetups,Lectures, MeanUser, Circles){
 		$scope.global = Global;
+    // $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 
 		//$scope.hasAuthorization = funtion(article){
 		//	if(!recipe || !recipe.user)
 		//}
 
+       // var myApp = angular.module('mean.metup',['ngMap']);
 		$scope.availableCircles = [];
     
    		Circles.mine(function(acl) {
