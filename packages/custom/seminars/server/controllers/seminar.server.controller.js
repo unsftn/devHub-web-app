@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
     Seminar = mongoose.model('Seminar'),
+   // Osoba = mongoose.model('Osoba'),
     _ = require('lodash');
 
 module.exports = function(Seminars) {
@@ -39,7 +40,15 @@ module.exports = function(Seminars) {
         update: function(req, res) {
             
             var seminar = req.seminar;
-
+            console.log(JSON.stringify(seminar));
+          /*  for(var i = 0; i < seminar.candidates.length; i++){
+                if(seminar.candidates[i].ime){
+                    seminar.candidates.push(Osoba);
+                    //dodaj osobu u bazu;
+                    //uzmi njegov id;
+                    //setuj id umesto kandidata u kolekciji
+                }
+            }*/
             seminar = _.extend(seminar, req.body);
 
 

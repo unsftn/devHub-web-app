@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$stateParams', '$location', 'Global', 'Seminars','Workshops','Osobe',
-		function($scope, $stateParams, $location, Global, Seminars, Workshops, Osobe) {
+angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$stateParams', '$location', 'Global', 'Seminars','Workshops',
+		function($scope, $stateParams, $location, Global, Seminars, Workshops) {
 			
 			$scope.global = Global;
 
@@ -111,12 +111,12 @@ angular.module('mean.seminars').controller('SeminarsController', ['$scope', '$st
 
         };
 
-      $scope.addCandidate = function() {
+     /* $scope.addCandidate = function() {
           var osoba = new Osobe($scope.osoba);
          
           $scope.seminar.candidates.push(osoba);
           $scope.update(true);
          
-      };
+      };*/
     }
 ]);
