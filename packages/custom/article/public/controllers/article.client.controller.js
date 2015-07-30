@@ -42,7 +42,7 @@ angular.module('mean.article', ['ngFileUpload']).controller('ArticleController',
     $scope.abstract = "";
     $scope.name = "";
     $scope.description = "";
-    $scope.link = "http://";
+    $scope.link = "";
     $scope.file = {};
      $scope.fileId;
     $scope.document;
@@ -245,6 +245,8 @@ angular.module('mean.article', ['ngFileUpload']).controller('ArticleController',
         $scope.filedhs = filedhs;
       });
     };
+    
+    
     
   }
 ]);
