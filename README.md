@@ -14,6 +14,11 @@ Then install it again with:
 <code><b>npm install</b></code>
 </p>
 <p>
+You need to install multer in root directory:
+<br />
+<code><b>npm install multer --save</b></code>
+</p>
+<p>
 You also need to do:
 <code><b>bower install</b></code> in <code>packages/custom/article</code> and <code>packages/custom/meetup</code>
 and <code><b>npm install</b></code> in <code>packages/custom/files</code>.
