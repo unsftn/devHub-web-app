@@ -17,7 +17,7 @@ Osoba.register(function(app, auth, database) {
   Osoba.routes(app, auth, database);
 
   //We are adding a link to the main menu for all authenticated users
-  Osoba.menus.add({
+  /*Osoba.menus.add({
     title: 'Lista osoba',
     link: 'lista osoba',
     roles: ['authenticated'],
@@ -28,7 +28,7 @@ Osoba.register(function(app, auth, database) {
     link: 'dodaj osobu',
     roles: ['authenticated'],
     menu: 'main'
-  });
+  });*/
 
   Osoba.aggregateAsset('css', 'osoba.css');
 

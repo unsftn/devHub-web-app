@@ -23,7 +23,18 @@ Lecture.register(function(app, auth, database) {
     roles: ['authenticated'],
     menu: 'main'
   });*/
-  
+  Lecture.menus.add({
+    title: 'Lista predavanja',
+    link: 'all lectures',
+    roles: ['authenticated'],
+    menu: 'main'
+  });
+  Lecture.menus.add({
+    title: 'Dodaj predavanje',
+    link: 'create lecture',
+    roles: ['authenticated'],
+    menu: 'main'
+  });
   Lecture.aggregateAsset('css', 'lecture.css');
 
   /**

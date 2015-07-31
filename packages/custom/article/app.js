@@ -23,7 +23,18 @@ Article.register(function(app, auth, database) {
     roles: ['authenticated'],
     menu: 'main'
   });*/
-  
+  Article.menus.add({
+    title: 'Lista clanaka',
+    link: 'all articles',
+    roles: ['authenticated'],
+    menu: 'main'
+  });
+  Article.menus.add({
+    title: 'Dodaj clanak',
+    link: 'create article',
+    roles: ['authenticated'],
+    menu: 'main'
+  });
   //Article.angularDependencies(['angular-redactor']);
   
   Article.aggregateAsset('css', 'article.css');

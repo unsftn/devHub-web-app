@@ -22,7 +22,18 @@ Meetup.register(function(app, auth, database) {
     link: 'all meetups',
     menu: 'main'
   });*/
-  
+  Meetup.menus.add({
+    title: 'Lista meetup-a',
+    link: 'all meetups',
+    roles: ['authenticated'],
+    menu: 'main'
+  });  
+  Meetup.menus.add({
+    title: 'Dodaj meetup',
+    link: 'create meetup',
+    roles: ['authenticated'],
+    menu: 'main'
+  });  
   Meetup.aggregateAsset('css', 'meetup.css');
     Meetup.aggregateAsset('js', '../lib/ngmap/build/scripts/ng-map.js', {
       absolute: false,
