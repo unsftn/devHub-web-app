@@ -17,12 +17,12 @@ Lecture.register(function(app, auth, database) {
   Lecture.routes(app, auth, database);
 
   //We are adding a link to the main menu for all authenticated users
-  Lecture.menus.add({
+  /*Lecture.menus.add({
     title: 'lecture example page',
     link: 'lecture example page',
     roles: ['authenticated'],
     menu: 'main'
-  });
+  });*/
   
   Lecture.aggregateAsset('css', 'lecture.css');
 

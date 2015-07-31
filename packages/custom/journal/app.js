@@ -17,12 +17,12 @@ Journal.register(function(app, auth, database) {
   Journal.routes(app, auth, database);
 
   //We are adding a link to the main menu for all authenticated users
-  Journal.menus.add({
+  /*Journal.menus.add({
     title: 'journal example page',
     link: 'journal example page',
     roles: ['authenticated'],
     menu: 'main'
-  });
+  });*/
   
   Journal.aggregateAsset('css', 'journal.css');
 

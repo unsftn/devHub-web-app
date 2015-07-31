@@ -17,12 +17,12 @@ Tags.register(function(app, auth, database) {
   Tags.routes(app, auth, database);
 
   //We are adding a link to the main menu for all authenticated users
-  Tags.menus.add({
+  /*Tags.menus.add({
     title: 'tags example page',
     link: 'tags example page',
     roles: ['authenticated'],
     menu: 'main'
-  });
+  });*/
   
   Tags.aggregateAsset('css', 'tags.css');
 

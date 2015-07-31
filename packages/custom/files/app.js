@@ -17,12 +17,12 @@ Files.register(function(app, auth, database) {
   Files.routes(app, auth, database);
 
   //We are adding a link to the main menu for all authenticated users
-  Files.menus.add({
+  /*Files.menus.add({
     title: 'files example page',
     link: 'files example page',
     roles: ['authenticated'],
     menu: 'main'
-  });
+  });*/
   
   Files.aggregateAsset('css', 'files.css');
 

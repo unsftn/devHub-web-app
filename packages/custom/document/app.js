@@ -18,12 +18,12 @@ Document.register(function(app, auth, database) {
   Document.routes(app, auth, database);
 
   //We are adding a link to the main menu for all authenticated users
-  Document.menus.add({
+  /*Document.menus.add({
     title: 'document example page',
     link: 'document example page',
     roles: ['authenticated'],
     menu: 'main'
-  });
+  });*/
   
  
   

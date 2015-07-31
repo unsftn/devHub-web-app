@@ -17,12 +17,12 @@ Article.register(function(app, auth, database) {
   Article.routes(app, auth, database);
 
   //We are adding a link to the main menu for all authenticated users
-  Article.menus.add({
+  /*Article.menus.add({
     title: 'article example page',
     link: 'article example page',
     roles: ['authenticated'],
     menu: 'main'
-  });
+  });*/
   
   //Article.angularDependencies(['angular-redactor']);
   

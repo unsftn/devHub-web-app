@@ -17,11 +17,11 @@ Meetup.register(function(app, auth, database) {
   Meetup.routes(app, auth, database);
 
   //We are adding a link to the main menu for all authenticated users
-  Meetup.menus.add({
+  /*Meetup.menus.add({
     title: 'meetup example page',
     link: 'all meetups',
     menu: 'main'
-  });
+  });*/
   
   Meetup.aggregateAsset('css', 'meetup.css');
     Meetup.aggregateAsset('js', '../lib/ngmap/build/scripts/ng-map.js', {

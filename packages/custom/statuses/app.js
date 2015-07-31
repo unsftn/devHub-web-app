@@ -17,12 +17,12 @@ Statuses.register(function(app, auth, database) {
   Statuses.routes(app, auth, database);
 
   //We are adding a link to the main menu for all authenticated users
-  Statuses.menus.add({
+  /*Statuses.menus.add({
     title: 'statuses example page',
     link: 'statuses example page',
     roles: ['authenticated'],
     menu: 'main'
-  });
+  });*/
   
   Statuses.aggregateAsset('css', 'statuses.css');
 
