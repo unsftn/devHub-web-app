@@ -30,10 +30,14 @@ var SeminarSchema = new Schema({
 
   },
 
- candidates: {
+/* candidates: {
     type: [Schema.ObjectId],
     ref: 'Osoba'
 
+  },*/
+
+  candidates: {
+    type: [String]
   },
 
   participants: {
